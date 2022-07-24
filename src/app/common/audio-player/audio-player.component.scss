@@ -1,0 +1,69 @@
+.wrapper {
+  display    : grid;
+  place-items: center;
+  background : #FFF;
+
+  .player-container {
+    width           : 100%;
+    padding         : 0 16px;
+    background-color: #000;
+    position        : relative;
+
+    #audio-player {
+      width: 100%;
+    }
+  }
+
+  .media-action-bar {
+    display              : grid;
+    width                : 100%;
+    align-items          : center;
+    grid-template-columns: 100px auto 60px;
+    padding              : 0 16px;
+
+    .time {
+      color  : #53606a;
+      display: flex;
+    }
+
+    .controls {
+      // flex: auto;
+      display        : flex;
+      justify-content: center;
+
+      button {
+        margin       : 0 6px;
+        // box-shadow: 0 2px 4px -1px rgb(0 0 0 / 12%), 0 1px 10px 0 rgb(0 0 0 / 4%), 0 4px 5px 0 rgb(0 0 0 / 6%);
+        background   : #FFFFFF;
+      }
+    }
+
+    .actions {
+      display        : flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+:host ::ng-deep.playback-menu .mat-menu-item {
+  height     : 32px !important;
+  line-height: 32px !important;
+  padding    : 0 12px;
+}
+
+::ng-deep.mat-menu-panel {
+  min-width  : auto !important;
+  margin-left: -2px !important;
+}
+
+:host ::ng-deep.marker-container {
+  margin-top: -8px;
+}
+
+:host ::ng-deep .do-card .ngx-position-absolute.ngx-overlay {
+  z-index: 500 !important;
+}
+
+:host ::ng-deep wave{
+  overflow: hidden !important;
+}

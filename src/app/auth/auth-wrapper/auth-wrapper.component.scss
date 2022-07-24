@@ -1,0 +1,74 @@
+.auth-container {
+	display: grid;
+	grid-template-columns: 30% 70%;
+	height: 100vh;
+
+	.left-panel {
+		background-image: linear-gradient(to bottom, #2ea7fa, #2ea7fa);
+		display: grid;
+		overflow: hidden;
+		.do-logo {
+			font-family: Poppins;
+			font-size: 2vw;
+			font-weight: 500;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: normal;
+			letter-spacing: -0.41px;
+			height: auto;
+			margin-top: 130px;
+			margin-left: 50px;
+		}
+		.featured-img {
+			opacity: 0.5;
+			overflow: hidden;
+			img {
+				position: relative;
+				bottom: -100px;
+				left: -25px;
+			}
+		}
+	}
+
+	.right-panel {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.error-container {
+			border-radius: 8px;
+			border: solid 1px #fd4949;
+			background-color: #ffffff;
+			color: #fd4949;
+			width: 50%;
+			padding: 10px;
+			font-weight: 500;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: normal;
+			letter-spacing: -0.25px;
+			.error-body span {
+				color: #2f80ed;
+				cursor: pointer;
+				padding-left: 10px;
+			}
+		}
+	}
+}
+
+:host ::ng-deep .left-panel {
+	color: white;
+	img {
+		width: 75%;
+		height: auto;
+	}
+	.tagline {
+		font-size: 2vw;
+		margin-left: 50px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -0.51px;
+	}
+}

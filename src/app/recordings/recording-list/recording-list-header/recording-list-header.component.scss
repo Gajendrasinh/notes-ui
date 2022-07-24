@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin: 16px 16px 0 16px;
+
+  .filter-button {
+    border: none;
+    font-size: 18px;
+    padding: 0;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.25px;
+    color: #000;
+  }
+}

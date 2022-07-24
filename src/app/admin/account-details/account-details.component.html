@@ -1,0 +1,97 @@
+<mat-card-content>
+	<form [formGroup]="accountDetailsForm">
+		<div class="form-content">
+			<div class="form-control-two-grid">
+				<div class="form-group">
+					<do-input label="Organization">
+						<input
+							matInput
+							type="text"
+							formControlName="organizationName"
+							placeholder="Organization Name"
+						/>
+						<mat-error>
+							<ng-container
+								*ngIf="
+									accountDetailsForm
+										.get('organizationName')
+										?.hasError('required')
+								"
+							>
+								Organization name missing.
+							</ng-container>
+						</mat-error>
+					</do-input>
+				</div>
+
+				<div class="form-group">
+					<do-input label="Website">
+						<input
+							matInput
+							type="text"
+							formControlName="website"
+							placeholder="Website"
+						/>
+						<mat-error>
+							<ng-container
+								*ngIf="accountDetailsForm.get('website')?.hasError('required')"
+							>
+								Website name missing.
+							</ng-container>
+						</mat-error>
+					</do-input>
+				</div>
+			</div>
+
+			<!-- [TODO] : below code will uncomment when required -->
+			<div class="form-control-two-grid">
+				<div class="form-group">
+					<do-input label="Account Admin">
+						<input
+							matInput
+							type="text"
+							formControlName="createdBy"
+							placeholder="createdBy"
+						/>
+						<mat-error>
+							<ng-container
+								*ngIf="
+									accountDetailsForm.get('createdBy')?.hasError('required')
+								"
+							>
+								createdBy Missing
+							</ng-container>
+						</mat-error>
+					</do-input>
+				</div>
+				<div class="form-group">
+					<do-input label="Admin E-mail">
+						<input
+							matInput
+							type="text"
+							formControlName="accountEmail"
+							placeholder="Account Email"
+						/>
+						<mat-error>
+							<ng-container
+								*ngIf="
+									accountDetailsForm.get('accountEmail')?.hasError('required')
+								"
+							>
+								accountE-mail Missing
+							</ng-container>
+						</mat-error>
+					</do-input>
+				</div>
+			</div>
+			<!-- <div class="user-created-date"> Created: {{account?.createdDate | date : 'MMMM d, yyyy'}} </div> -->
+
+			<!-- <div class="form-btn">
+        <button class="detele-accout-btn" mat-raised-button [disabled]="!accountDetailsForm.valid">
+          DELETE ACCOUNT </button>
+  
+        <button class="edit-changePassword-btn" mat-flat-button> Edit details </button>
+      </div> -->
+		</div>
+	</form>
+</mat-card-content>

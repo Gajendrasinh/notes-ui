@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-header>
+        <div class="search">
+            <mat-icon class="search-icon">search</mat-icon>
+            <input type="text" name="recordings-search" placeholder="Search topics and keywords"
+                [formControl]="searchControl" maxlength="30" />
+        </div>
+            <button mat-flat-button color="primary" (click)="openAddTopicDialog()"> + TOPIC </button>
+    </mat-card-header>
+    <mat-card-content>
+        Topics: {{topicsCount$ | async}}
+    </mat-card-content>
+</mat-card>

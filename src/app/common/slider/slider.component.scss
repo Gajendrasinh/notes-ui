@@ -1,0 +1,41 @@
+.wrapper {
+  width: 60px;
+  margin: 0 8px;
+
+  .container {
+    height: 4px;
+    position: relative;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .progress {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      height: 4px;
+      transform-origin: 0 0;
+      background: #FFF;
+    }
+
+    .handle {
+      width: 12px;
+      height: 12px;
+      background-color: #FFF;
+      position: absolute;
+      z-index: 99;
+      user-select: none;
+      outline: 0;
+      border-radius: 50%;
+      top: -4px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+  }
+}

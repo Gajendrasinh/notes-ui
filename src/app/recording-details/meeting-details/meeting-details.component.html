@@ -1,0 +1,20 @@
+<mat-card class="do-card">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<div class="header" *ngIf="recordingDetails$ | async as recording" #Header>
+		<div
+			class="main-heading body-medium font-weight-500"
+			matTooltip="{{ recording.name }}"
+			[matTooltipHideDelay]="400"
+			[matTooltipDisabled]="recording.name.length <= 45"
+		>
+			{{ recording.name }}
+		</div>
+		<div class="sub-heading body-small" *ngIf="timezone">
+			<span>{{ recording.meetingTime | dateWithLocalTimezone }}</span>
+			<span class="user body-small">
+				<mat-icon class="heading-5 font-weight-500">person_outline</mat-icon>
+				<span> {{ recording.inviter.name }} </span>
+			</span>
+		</div>
+	</div>
+</mat-card>

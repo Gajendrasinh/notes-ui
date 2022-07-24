@@ -1,0 +1,121 @@
+<div class="users-table-container">
+	<div class="search-container">
+		<mat-card>
+			<mat-card-header>
+				<div class="search">
+					<mat-icon class="search-icon">search</mat-icon>
+					<input
+						type="text"
+						name="recordings-search"
+						placeholder="Search users"
+						[formControl]="searchControl"
+					/>
+				</div>
+				<button
+					mat-flat-button
+					color="primary"
+					(click)="openInviteUserDialog()"
+				>
+					+ USER
+				</button>
+			</mat-card-header>
+			<mat-card-content>
+				Users: {{ dataSource?.filteredData?.length }}
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<mat-card class="table-container">
+		<div class="mat-elevation-z8">
+			<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+			<table
+				mat-table
+				multiTemplateDataRows
+				[dataSource]="dataSource"
+				matSort
+				matSortDisableClear
+			>
+				<ng-container matColumnDef="select">
+					<th mat-header-cell *matHeaderCellDef class="table-header-left">
+						<!-- <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()"
+              (click)="selectAllUserData(dataSource.data)">
+            </mat-checkbox> -->
+					</th>
+					<td mat-cell *matCellDef="let row">
+						<!-- <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)" (click)="selectUserData(row)">
+            </mat-checkbox> -->
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="name">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+					<td mat-cell *matCellDef="let row">
+						{{ row.name }} <span *ngIf="row.invitedUser">*</span>
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="emailId">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
+					<td mat-cell *matCellDef="let row">{{ row.emailId }}</td>
+				</ng-container>
+
+				<ng-container matColumnDef="role">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="role-th">
+						Role
+					</th>
+					<td mat-cell *matCellDef="let row">{{ row.role }}</td>
+				</ng-container>
+
+				<ng-container matColumnDef="lastSignIn">
+					<th
+						mat-header-cell
+						*matHeaderCellDef
+						mat-sort-header
+						class="last-login-th"
+					>
+						Last Login
+					</th>
+					<td mat-cell *matCellDef="let row">
+						{{ row.lastSignIn | date: "MM-dd-yyyy HH:mm" }}
+					</td>
+				</ng-container>
+
+				<ng-container matColumnDef="edit">
+					<!-- <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon class="edit_delete_icon" *ngIf="row.isInvited" (click)="editUser()">replay</mat-icon>
+            <mat-icon class="edit_delete_icon" (click)="editUser()" *ngIf="!row.isInvited">edit</mat-icon>
+
+          </td> -->
+				</ng-container>
+
+				<ng-container matColumnDef="delete">
+					<!-- <th mat-header-cell *matHeaderCellDef class="table-header-right"> </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon class="edit_delete_icon" (click)="deleteUser(row.id)">delete_outline</mat-icon>
+          </td> -->
+				</ng-container>
+
+				<tr
+					mat-header-row
+					*matHeaderRowDef="displayedColumns; sticky: true"
+				></tr>
+				<tr
+					class="table-row"
+					mat-row
+					*matRowDef="let row; columns: displayedColumns"
+					(click)="selectUserData(row)"
+				></tr>
+				<!-- [ngClass]="{'selected': selection.isSelected(row)}" -->
+				<tr class="mat-row" *matNoDataRow>
+					<td class="mat-cell" colspan="4">
+						No matching result(s) found..!! &nbsp; "
+						<b> {{ searchedText }} </b> "
+					</td>
+				</tr>
+			</table>
+		</div>
+	</mat-card>
+</div>

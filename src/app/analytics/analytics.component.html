@@ -1,0 +1,11 @@
+<div class="container bg-neutral-2" *ngIf="'isAnalyticsModule' | featureAccess">
+	<app-analytics-details-header></app-analytics-details-header>
+	<div class="container-body">
+		<div class="participant-talk-ratio" *ngIf="'isTalkRatio' | featureAccess">
+			<app-participant-talk-ratio></app-participant-talk-ratio>
+		</div>
+		<div class="topic-discussed" *ngIf="'isTopicsDiscussed' | featureAccess">
+			<app-topic-discussed></app-topic-discussed>
+		</div>
+	</div>
+</div>

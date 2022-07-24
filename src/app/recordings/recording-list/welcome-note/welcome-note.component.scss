@@ -1,0 +1,34 @@
+.wrapper {
+    background-color: white;
+    margin          : 80px 100px 80px 100px;
+    padding         : 50px 50px 20px 50px;
+    border-radius   : 10px;
+    box-shadow      : 0 8px 15px -5px rgba(0, 0, 0, 0.12), 0 6px 30px 5px rgba(0, 0, 0, 0.04), 0 16px 24px 2px rgba(0, 0, 0, 0.06);
+    align-items     : center;
+    text-align      : center;
+    .wrapper-header{
+        font-weight: 590;
+        font-size: 22px;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        // letter-spacing: -1.35px;
+        color: #0219ce;
+    }
+    .wrapper-body{
+        margin-top: 30px;
+        .content{
+            padding-bottom: 35px;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: italic;
+            line-height: normal;
+            // letter-spacing: -0.27px;
+            text-align: center;
+            opacity: 0.9;
+            color: #384652;
+        }
+    }
+
+}

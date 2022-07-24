@@ -1,0 +1,28 @@
+<div
+  #seekBarContainer
+  class="progress-bar"
+  [class.active]="dragState.isMouseDown"
+  (click)="handleClick($event)"
+>
+  <div
+    #seekHandle
+    draggable="true"
+    class="handler"
+    (mousedown)="seekHandlerMouseDown($event)"
+    (mouseup)="seekHandlerMouseUp($event)"
+    [style.left]="
+      (currentTime / duration) * seekBarContainer.offsetWidth -
+      seekHandle.offsetWidth / 2 +
+      'px'
+    "
+  ></div>
+  <div class="progress bg"></div>
+  <div
+    class="progress load"
+    [style.transform]="'scaleX(' + bufferedRange.end / duration + ')'"
+  ></div>
+  <div
+    class="progress play"
+    [style.transform]="'scaleX(' + currentTime / duration + ')'"
+  ></div>
+</div>

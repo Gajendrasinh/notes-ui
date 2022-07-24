@@ -1,0 +1,10 @@
+<button mat-icon-button *ngIf="authUserInfo" class="user-avatar" [matMenuTriggerFor]="menu">
+  <ngx-avatar
+    [size]="35"
+    [bgColor]="userAvtarBgColor"
+    [name]="displayName"
+  ></ngx-avatar>
+</button>
+<mat-menu #menu="matMenu" class="menu-panel">
+  <app-user-profile-menu> </app-user-profile-menu>
+</mat-menu>

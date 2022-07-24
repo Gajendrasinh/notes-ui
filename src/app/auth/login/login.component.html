@@ -1,0 +1,88 @@
+<app-auth-wrapper>
+	<div class="form-container">
+		<div class="heading-4 text-neutral-8 font-weight-500">
+			Sign in to DataOrb
+		</div>
+		<div class="form-sub-title body-medium text-neutral-6 font-weight-500">
+			<span> New to DataOrb? </span>
+			<a routerLink="/register" class="text-info font-weight-500"> Sign up</a>
+		</div>
+		<div class="form-content">
+			<form [formGroup]="loginForm">
+				<do-input label="E-mail">
+					<input
+						matInput
+						type="email"
+						formControlName="username"
+						placeholder="name@company.com"
+					/>
+					<mat-error>
+						<ng-container
+							*ngIf="loginForm.get('username')?.hasError('required')"
+							>E-mail address missing.
+						</ng-container>
+						<ng-container *ngIf="loginForm.get('username')?.hasError('email')"
+							>Invalid e-mail address.
+						</ng-container>
+					</mat-error>
+				</do-input>
+				<div class="password-container">
+					<do-input label="Password">
+						<input
+							matInput
+							[type]="isPasswordShow ? 'password' : 'text'"
+							id="password"
+							formControlName="password"
+							maxlength="16"
+							(keyup)="handleCapsLock($event)"
+							placeholder="8+ characters, 1 capital letter, 1 Special character "
+						/>
+						<div class="capsLock" matSuffix>
+							<mat-icon [ngClass]="{ showCapsLock: isCapsLockActive }"
+								>arrow_upward</mat-icon
+							>
+						</div>
+						<mat-icon matSuffix (click)="togglePassword()">{{
+							isPasswordShow ? "visibility_off" : "visibility"
+						}}</mat-icon>
+						<mat-error> Password Missing. </mat-error>
+					</do-input>
+					<a
+						routerLink="/forgot-password"
+						class="forgot-link body text-info font-weight-500"
+					>
+						Forgot password?</a
+					>
+				</div>
+				<div class="form-group">
+					<button
+						type="submit"
+						class="sign-in-btn"
+						mat-flat-button
+						color="primary"
+						[disabled]="!loginForm.valid"
+						(click)="signInToAWS()"
+					>
+						<mat-spinner *ngIf="isDisableLogin" diameter="22"></mat-spinner>
+						Sign In
+					</button>
+				</div>
+			</form>
+			<div class="form-group">
+				<button
+					class="google-btn"
+					mat-stroked-button
+					(click)="registrationTokenPost(); signInToGoogle()"
+					[disabled]="isDisableLogin"
+				>
+					<img
+						class="googleLogo"
+						[src]="getAssetsPath('/assets/icons/google-icon.svg')"
+						alt="googleButton"
+					/>
+					Sign In with Google
+				</button>
+			</div>
+		</div>
+	</div>
+</app-auth-wrapper>

@@ -1,0 +1,72 @@
+<div class="wrapper">
+	<app-verify-recorded-voiceprint
+		*ngIf="viewState === 'verify' && recordedAudio"
+		[src]="recordedAudio.audioUrl"
+		[currentUserInfo]="currentUserInfo"
+		[duration]="duration"
+		[isDisableSave]="isDisableSave"
+		(discard)="discardAudio()"
+		(save)="saveRecording()"
+	>
+	</app-verify-recorded-voiceprint>
+
+	<ng-container *ngIf="viewState === 'record'">
+		<div class="page-container">
+			<div class="voice-print-header" *ngIf="!startRecord">
+				Please hit the “record button” and read out the passage given below as
+				you would normally speak, to create your voice print. Voiceprints help
+				us accurately indentify your voice.
+			</div>
+			<div class="voice-print-header" *ngIf="startRecord">
+				When you finish the passage, hit the stop button below to save your
+				recording.
+			</div>
+			<div class="voice-print-content">
+				Hello Dataorb,
+				<br /><br />
+				My name is &lt;<span> say your name. Eg. John Doe </span>&gt;<br />
+				and I work as &lt;<span> say your job title. E.g. CEO </span>&gt;<br />
+				at &lt;<span> say your organization name. Eg DataOrb, Inc. </span
+				>&gt;<br />
+				<br />
+				Steve Jobs once said;
+				<br /><br />
+				“The only way to be truly satisfied is to do what you believe is great
+				work. The only way to do great work is to love what you do.
+				<br /><br />
+				If you haven’t found it yet, keep looking. Don’t settle."
+			</div>
+			<app-record-voiceprint
+				(startRecordingVoice)="startRecording()"
+				(stopRecordingVoice)="stopRecording($event)"
+			></app-record-voiceprint>
+		</div>
+		<footer>
+			<div class="Recommendation-massage">
+				<span> Recommendation: </span>
+				<span class="massage">
+					Dialogue length of > 20 seconds would create a stronger voice profile
+					for accurate voice identification.
+				</span>
+			</div>
+
+			<button
+				class="cancel-btn"
+				mat-stroked-button
+				color="primary"
+				(click)="handleBack()"
+				*ngIf="(currentOnboardingStep || 0) < stepIndexEnum.SETUP_VOICE_PRINT"
+			>
+				BACK
+			</button>
+			<button
+				mat-flat-button
+				color="primary"
+				(click)="handleNext()"
+				[disabled]="!recordedAudio"
+			>
+				NEXT
+			</button>
+		</footer>
+	</ng-container>
+</div>

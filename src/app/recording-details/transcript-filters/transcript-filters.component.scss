@@ -1,0 +1,36 @@
+@use "../../../styles-color.scss";
+
+.do-card {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+	align-items: center;
+	color: #a6a7ac;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.75;
+	letter-spacing: -0.2px;
+
+	.filters span:not(:last-child):after {
+		// @extend .text-neutral-6;
+		content: " | ";
+		padding: 0px 5px 0px 5px;
+	}
+	.clear-filter {
+		font-size: 12px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -0.15px;
+		padding: 4px;
+	}
+}

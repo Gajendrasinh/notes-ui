@@ -1,0 +1,17 @@
+.wrapper {
+  padding: 8px 24px;
+
+  .header {
+    display: flex;
+
+    .close-btn {
+      margin-top: -16px;
+      margin-right: -32px;
+
+      .close-icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+}

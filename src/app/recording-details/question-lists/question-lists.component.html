@@ -1,0 +1,45 @@
+<mat-card class="card">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header> Question List </mat-card-header>
+	<mat-card-content>
+		<ng-container *ngIf="questionList$ | async as questionItems">
+			<ng-container
+				*ngIf="
+					messageString && !questionItems?.length;
+					then noData;
+					else content
+				"
+			></ng-container>
+			<ng-template #content>
+				<mat-list>
+					<mat-list-item
+						*ngFor="let a of questionItems; let i = index"
+						(click)="updateTranscriptFilter(a.dialogueId)"
+					>
+						<div matListIcon class="question-count">
+							{{ i + 1 | number: "2.0-0" }}
+						</div>
+						<h3
+							matLine
+							[ngStyle]="{
+								color: a.speaker.isOrgUser === false ? '#27ae60' : '#2f80ed'
+							}"
+						>
+							<span class="speaker">
+								{{ a.speaker.name || a.speaker.emailId }}</span
+							>
+						</h3>
+						<p matLine>
+							<span> {{ a.question }} </span>
+						</p>
+					</mat-list-item>
+				</mat-list>
+			</ng-template>
+			<ng-template #noData>
+				<div class="empty-message" *ngIf="messageString">
+					{{ messageString }}
+				</div>
+			</ng-template>
+		</ng-container>
+	</mat-card-content>
+</mat-card>

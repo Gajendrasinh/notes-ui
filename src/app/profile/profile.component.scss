@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	height: calc(100vh - 64px);
+
+	width: auto;
+	padding-top: 0;
+
+	.main-wrapper {
+		width: 100%;
+		padding: 23px 0;
+		background-color: #f7f8fc;
+		display: block;
+
+		.header {
+			display: block;
+			margin-bottom: 8px;
+		}
+	}
+}

@@ -1,0 +1,31 @@
+<div class="do-card">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<ng-container *ngIf="transcripts$ | async as transcripts">
+		<ng-container
+			*ngIf="messageString && !transcripts.length; then message; else content"
+		></ng-container>
+		<ng-template #message>
+			<div class="empty-message" *ngIf="messageString">
+				<span>{{ messageString }} </span>
+			</div>
+		</ng-template>
+		<ng-template #content>
+			<div class="calc-conversation-height" #ConvHeightCalcCard></div>
+			<virtual-scroller
+				*ngIf="transcripts.length > 0"
+				#scroll
+				[items]="transcripts"
+				[calculateItemHeightFn]="virtualScrollCalculateHeightFn"
+				class="conversations"
+				[enableUnequalChildrenSizes]="true"
+				[compareItems]="virtualScrollCompareItems"
+				cdkScrollable
+			>
+				<app-conversation-card
+					*ngFor="let t of scroll.viewPortItems; let i = index"
+					[conversationCard]="t"
+				></app-conversation-card>
+			</virtual-scroller>
+		</ng-template>
+	</ng-container>
+</div>

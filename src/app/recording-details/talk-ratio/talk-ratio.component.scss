@@ -1,0 +1,63 @@
+.do-card {
+	height: auto;
+	width: 100%;
+	mat-card-header {
+		font-weight: 600;
+		letter-spacing: -0.23px;
+		color: #595959;
+		font-size: 18px;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+	}
+}
+.do-card .do-card-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+	background-color: white;
+	border-radius: var(--do-card-radius);
+	// position: relative;
+	.talk-ratio-container {
+		margin-bottom: 10px;
+		.talk-ratio-bar {
+			border-radius: 4px;
+			padding: 10px 2px;
+			font-weight: 500;
+			letter-spacing: -0.18px;
+			color: #595959;
+			font-weight: 500;
+			font-size: 14px;
+			white-space: nowrap;
+			border-radius: 4px;
+
+			span {
+				padding-left: 10px;
+			}
+		}
+		.labels {
+			margin-bottom: 5px;
+			font-size: 12px;
+		}
+	}
+	.chart {
+		height: 100%;
+	}
+}
+::ng-deep
+	.mat-slide-toggle.mat-checked:not(.mat-disabled)
+	.mat-slide-toggle-thumb {
+	background-color: #786eea;
+}
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+	background-color: #dfe6f1;
+	// opacity: 0.3;
+}
+::ng-deep .mat-slide-toggle-bar {
+	background-color: #1fbff94d;
+}
+::ng-deep .mat-slide-toggle-thumb {
+	background-color: #1fc0f9;
+}

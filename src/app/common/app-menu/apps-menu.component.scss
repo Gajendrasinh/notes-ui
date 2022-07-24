@@ -1,0 +1,57 @@
+.apps-btn {
+  color: #424242;
+}
+
+.apps {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: auto auto auto;
+  padding: 8px 16px;
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    color: #231f20;
+    text-decoration: none;
+
+    .icon {
+      color: #2f80ed;
+    }
+
+    &.gold {
+      .icon {
+        color: #e2b93b;
+      }
+
+      &:hover {
+        background: rgba(226, 185, 59, 0.2);
+        border-color: rgba(226, 185, 59, 0.2);
+        cursor: pointer;
+      }
+    }
+
+    &.active,
+    &.active:hover {
+      background: rgba(47, 128, 237, 0.1);
+      border-color: #2f80ed;
+    }
+
+    &.gold.active,
+    &.gold.active:hover {
+      background: rgba(226, 185, 59, 0.1);
+      border-color: #e2b93b;
+    }
+
+    &:hover {
+      background: rgba(47, 128, 237, 0.1);
+      border-color: rgba(47, 128, 237, 0.1);
+      cursor: pointer;
+    }
+  }
+}

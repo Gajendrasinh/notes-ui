@@ -1,0 +1,85 @@
+<div mat-dialog-title>
+	<input
+		matInput
+		cdkFocusInitial
+		class="name"
+		type="text"
+		placeholder="Topic Name"
+		[formControl]="topicControl"
+		maxlength="30"
+	/>
+	<div class="error-message">
+		<mat-error *ngIf="topicControl.dirty || topicControl.touched">
+			<ng-container *ngIf="topicControl?.hasError('required')"
+				>Topic name missing.</ng-container
+			>
+			<ng-container *ngIf="topicControl?.hasError('pattern')"
+				>Invalid topic name. allowed only - , .
+			</ng-container>
+		</mat-error>
+	</div>
+</div>
+<div class="hr"></div>
+<mat-dialog-content>
+	<mat-tab-group mat-align-tabs="center" [disablePagination]="true">
+		<!-- <mat-tab label="Themes"> </mat-tab> -->
+		<mat-tab label="Keywords">
+			<div class="container">
+				<div class="keyword-input">
+					<input
+						matInput
+						type="text"
+						placeholder='Type and hit "enter" to add a keyword for the topic'
+						[formControl]="keywordControl"
+						(keyup.enter)="onKeywordAdd()"
+						maxlength="30"
+					/>
+					<!--  keywords.length <= 0 skeywordControl?.hasError('required') -->
+					<div class="error-message">
+						<mat-error *ngIf="keywordControl.dirty || keywordControl.touched">
+							<ng-container
+								*ngIf="
+									keywordControl.value === '' &&
+									keywords.length <= 0 &&
+									!keywordControl?.hasError('pattern')
+								"
+								>Keyword name missing</ng-container
+							>
+							<ng-container *ngIf="keywordControl?.hasError('pattern')"
+								>Invalid keyword name. allowed only - , .
+							</ng-container>
+						</mat-error>
+					</div>
+				</div>
+				<div class="keyword-list">
+					<mat-chip-list aria-label="Keywords">
+						<mat-chip
+							class="chip"
+							*ngFor="let keyword of keywords"
+							(removed)="onKeywordRemove(keyword)"
+						>
+							{{ keyword }}
+							<mat-icon matChipRemove class="remove">cancel</mat-icon>
+						</mat-chip>
+					</mat-chip-list>
+				</div>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions class="actions" align="end">
+	<button mat-button mat-stroked-button mat-dialog-close color="primary">
+		CANCEL
+	</button>
+	<button
+		mat-button
+		mat-raised-button
+		color="primary"
+		[disabled]="
+			!(topicControl.value && keywords.length > 0 && topicControl.valid)
+		"
+		(click)="addTopic()"
+	>
+		SAVE
+	</button>
+</mat-dialog-actions>

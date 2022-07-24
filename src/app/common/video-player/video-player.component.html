@@ -1,0 +1,99 @@
+<div class="video-wrapper">
+  <video #videoPlayer id="video_player" controlsList="nodownload">
+    <source [src]="url" type="video/webm" />
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+  <div class="central-controls" *ngIf="state.canplay" [class.visible]="state.waiting">
+    <button
+      mat-icon-button
+      color="default"
+      (click)="skip(-10)"
+      [disabled]="!state.canplay"
+      matTooltip="skip(-10)"
+    >
+      <mat-icon mat-list-icon inline="true" class="icon">replay_10</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="default"
+      (click)="state.playing ? pause() : play()"
+      [disabled]="!state.canplay"
+      *ngIf="!state.waiting"
+    >
+      <mat-icon
+        mat-list-icon
+        inline="true"
+        class="icon"
+        [matTooltip]="state.playing ? 'Pause' : 'Play'"
+        >{{ state.playing ? "pause" : "play_arrow" }}</mat-icon
+      >
+    </button>
+    <div class="loader" *ngIf="state.waiting">
+      <app-circle-loader [size]="30" color="#d6d9df"></app-circle-loader>
+    </div>
+    <button
+      mat-icon-button
+      color="default"
+      (click)="skip(10)"
+      [disabled]="!state.canplay"
+      matTooltip="skip(+10)"
+    >
+      <mat-icon mat-list-icon inline="true" class="icon">forward_10</mat-icon>
+    </button>
+  </div>
+  <div class="footer" *ngIf="state.canplay" [class.visible]="state.waiting">
+    <seek-bar
+      [currentTime]="state.currentTime"
+      [duration]="state.duration"
+      [bufferedRange]="state.bufferedRange"
+      (seekChange)="handleSeekChange($event)"
+      (seekStart)="handleSeekStart()"
+      (seekEnd)="handleSeekEnd()"
+    ></seek-bar>
+    <div class="controls">
+      <button
+        mat-icon-button
+        color="default"
+        (click)="state.playing ? pause() : play()"
+        [disabled]="!state.canplay || state.waiting"
+      >
+        <mat-icon
+          mat-list-icon
+          class="icon"
+          [matTooltip]="state.playing ? 'Pause' : 'Play'"
+          >{{ state.playing ? "pause" : "play_arrow" }}</mat-icon
+        >
+      </button>
+      <div class="volume-wrapper">
+        <button
+          mat-icon-button
+          (click)="toggleMute()"
+          [disabled]="!state.canplay"
+        >
+          <mat-icon
+            mat-list-icon
+            class="icon"
+            [matTooltip]="state.volume === 0 ? 'Unmute' : 'Mute'"
+            >{{
+              state.volume < 0.5
+                ? state.volume === 0
+                  ? "volume_off"
+                  : "volume_down"
+                : "volume_up"
+            }}</mat-icon
+          >
+        </button>
+        <app-slider
+          class="volume-slider"
+          [volume]="state.volume"
+          (sliderChange)="handleVolumeChange($event)"
+        ></app-slider>
+      </div>
+
+      <label class="time">
+        {{ state.currentTime | playbackTime }} /
+        {{ state.duration | playbackTime }}
+      </label>
+    </div>
+  </div>
+</div>

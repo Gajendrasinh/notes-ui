@@ -1,0 +1,11 @@
+<div class="notification">
+  <div class="icons" [ngSwitch]="notification.type">
+    <mat-icon class="info" *ngSwitchCase="'info'">info</mat-icon>
+    <mat-icon class="success" *ngSwitchCase="'success'">check_circle</mat-icon>
+    <mat-icon class="warning" *ngSwitchCase="'warning'">warning</mat-icon>
+    <mat-icon class="error" *ngSwitchCase="'error'">error</mat-icon>
+  </div>
+  <div class="message">
+    {{notification.text}}
+  </div>
+</div>

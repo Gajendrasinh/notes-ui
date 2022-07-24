@@ -1,0 +1,69 @@
+mat-card-content {
+	padding: 0px 40px;
+	.form-content {
+		height: 40vh;
+		overflow-y: scroll;
+		margin-bottom: 10px;
+	}
+	.form-control-two-grid {
+		display: grid;
+		grid-template-columns: 50% 50%;
+
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			padding: 0px 10px;
+		}
+	}
+	.alias-example {
+		color: #9293a7;
+		padding: 0px 0px 0px 20px;
+		opacity: 0.9;
+	}
+	.user-created-date {
+		color: #9293a7;
+		padding: 0px 0px 25px 20px;
+		font-style: italic;
+		font-stretch: normal;
+		font-style: italic;
+	}
+
+	.form-control-four-grid {
+		display: grid;
+		grid-template-columns: 25% 25% 25% 25%;
+		padding: 0px 10px 0px 10px;
+
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			padding: 5px 10px;
+		}
+	}
+	.form-btn {
+		padding: 0 15px 0 15px;
+		align-items: flex-start;
+		.detele-accout-btn {
+			background-color: #f34162;
+			color: white;
+			margin-right: 10px;
+			width: 48%;
+		}
+		.edit-changePassword-btn {
+			font-weight: 550;
+			color: #4184f3;
+			margin-right: 0;
+		}
+	}
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	background-color: #fdfdff;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	color: #d5d4df !important;
+}
+::ng-deep .mat-input-element:disabled,
+.mat-form-field-type-mat-native-select.mat-form-field-disabled
+	.mat-form-field-infix::after {
+	font-weight: 500;
+	color: #22326b;
+}

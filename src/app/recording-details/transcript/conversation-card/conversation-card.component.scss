@@ -1,0 +1,39 @@
+@import "../../../../styles-color.scss";
+
+.conversation-card {
+	// margin: 5px 5px 8px 5px;
+	// padding: 20px 20px;
+	// border-radius: 10px;
+	// box-shadow: 0 0 0 0.5px #d6e5ff;
+	background-color: transparent;
+	border-color: transparent;
+
+	app-conversation:not(:last-child) {
+		margin-bottom: calc(1 * var(--do-spacing));
+		display: block;
+	}
+
+	margin-bottom: calc(1 * var(--do-spacing));
+}
+.clubbedCard {
+	background-color: white;
+	border-color: $app-neutral-color-3;
+	app-conversation ::ng-deep mat-card {
+		border-color: transparent;
+		&.activeCard {
+			border: solid 2px #5ad9f4;
+		}
+	}
+}
+:host ::ng-deep .clubbedCard {
+	& .card-seprator {
+		border-bottom: 2px solid #ddd;
+	}
+}
+.conversation-card:hover {
+	// box-shadow: 0px 0px 5px gray;
+}
+
+.activeCard {
+	border: solid 2px #5ad9f4;
+}

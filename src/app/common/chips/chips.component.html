@@ -1,0 +1,13 @@
+<!-- <mat-chip-list aria-label=""> -->
+    <span
+    [style.color]="appearance === 'fill' ? 'white' : color "
+    [style.backgroundColor]="appearance === 'fill' ? color : 'white'"
+    [ngClass]="appearance"
+    [style.border]="appearance && '1px solid ' + color "
+    >
+    {{chipsTitle}} ({{chipsCount}})
+    {{color}}
+  </span>
+
+    
+  <!-- </mat-chip-list> -->

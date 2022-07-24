@@ -1,0 +1,16 @@
+.do-card {
+	height: calc(100% - 10px);
+	position: relative;
+}
+.conversations {
+	height: 100%;
+	scroll-behavior: smooth;
+}
+
+:host ::ng-deep .do-card .ngx-position-absolute.ngx-overlay {
+	z-index: 500 !important;
+}
+.calc-conversation-height {
+	padding: 0px 16px 0px 66px;
+	margin-right: 8px;
+}

@@ -1,0 +1,13 @@
+<mat-card *ngIf="'isProfileCalendar' | featureAccess">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header>Calendar sync</mat-card-header>
+	<p class="sub-title">Sync your calendar & drive with DataOrb</p>
+	<mat-card-content>
+		<app-calendar-integration-card
+			class="calendar-integration-card"
+			(accountChange)="handleAccountChange($event)"
+			(connected)="connected = $event"
+			[allowSyncCall]="true"
+		></app-calendar-integration-card>
+	</mat-card-content>
+</mat-card>

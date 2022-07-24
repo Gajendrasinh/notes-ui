@@ -1,0 +1,34 @@
+<div class="auth-container">
+	<div class="left-panel">
+		<div class="do-logo">
+			<div>DataOrb</div>
+		</div>
+		<div class="tagline">
+			Conversation <br />
+			Intelligence for Revenue <br />
+			Teams
+		</div>
+		<div class="featured-img">
+			<img [src]="getAssetsPath('/assets/icons/Square-Dark.svg')" />
+		</div>
+	</div>
+
+	<div class="right-panel">
+		<ng-content select=".form-container"></ng-content>
+		<div class="error-container" *ngIf="authError$ | async as error">
+			<div>
+				<header class="error-header">
+					<!-- Cannot Login -->
+					{{ error.header }}
+				</header>
+				<div class="error-body">
+					{{ error.message }} &nbsp; &nbsp;
+					<!-- Invalid credentials. Please try again. -->
+					<span *ngIf="error.action as action">
+						<a (click)="action.handler()">{{ action.title }}</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

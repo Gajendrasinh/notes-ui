@@ -1,0 +1,30 @@
+.container {
+	display: flex;
+	height: calc(100vh - 64px);
+
+	width: auto;
+	padding-top: 0;
+
+	.main-wrapper {
+		width: 100%;
+		padding: 0px;
+		background-color: #f7f8fc;
+		display: block;
+
+		.header {
+			display: block;
+			margin-bottom: 8px;
+		}
+
+		.main {
+			padding: 0px;
+			.account-details-container {
+				background-color: #f7f8fc;
+				border-radius: 12px;
+				height: calc(100vh - 75px);
+				width: auto;
+				padding: 22px 0;
+			}
+		}
+	}
+}

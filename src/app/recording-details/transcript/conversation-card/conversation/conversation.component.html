@@ -1,0 +1,105 @@
+<!-- Start: New UI Design -->
+<mat-card
+	class="card"
+	[id]="'conversation-card-' + conversation.dialogueId"
+	[ngClass]="{
+		activeCard: dialogId === conversation.dialogueId
+	}"
+>
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header>
+		<div class="dialog-header">
+			<ngx-avatar
+				[size]="40"
+				[name]="avatarSpeakerName"
+				[bgColor]="conversation.speaker?.isOrgUser ? INFO_COLOR : SUCCESS_COLOR"
+			></ngx-avatar>
+			<div>
+				<div class="userNameInput">
+					<input
+						#SpeakerInput
+						[readonly]="
+							!conversation.speaker.editable ||
+							!isEditUserName ||
+							(speakerUpdateInProgress$ | async)
+						"
+						class="conversationUserName"
+						[ngClass]="{ editable: conversation.speaker.editable }"
+						[matAutocomplete]="speakerAutoComplete"
+						[formControl]="speakerNameControl"
+						placeholder="Select Speaker"
+						(click)="editUserName()"
+					/>
+					<button
+						class="editIcon"
+						mat-icon-button
+						*ngIf="conversation.speaker.editable && !isEditUserName"
+						(click)="editUserName()"
+					>
+						<mat-icon>edit</mat-icon>
+					</button>
+					<button
+						mat-icon-button
+						*ngIf="conversation.speaker.editable && isEditUserName"
+						(click)="discardEditUserName()"
+					>
+						<mat-icon>close</mat-icon>
+					</button>
+				</div>
+				<mat-card-subtitle class="text-neutral-7">{{
+					conversation.speaker.designation
+				}}</mat-card-subtitle>
+			</div>
+			<div class="action-buttons">
+				<button color="primary" mat-icon-button (click)="jumpToTime()">
+					<mat-icon>play_circle_outline</mat-icon>
+				</button>
+			</div>
+		</div>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="dialog-content">
+			<div></div>
+			<div>
+				<p
+					class="conversationMessage text-neutral-7"
+					[innerHTML]="transcript"
+					appHighlight
+					#Transcript
+				></p>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>
+
+<!-- End: New UI Design -->
+
+<mat-autocomplete
+	#speakerAutoComplete="matAutocomplete"
+	class="speakerAutoComplete"
+	[displayWith]="speakerDisplayWith"
+	(optionSelected)="updateSpeaker($event)"
+>
+	<mat-option
+		*ngFor="let p of participants$ | async"
+		[value]="p"
+		[matTooltip]="p.emailId"
+		matTooltipPosition="before"
+		matTooltip
+		[matTooltipDisabled]="p.isNameRequired"
+	>
+		{{ p.name }}
+	</mat-option>
+</mat-autocomplete>
+
+<mat-menu #menu="matMenu">
+	<button
+		mat-menu-item
+		color="primary"
+		(click)="editUserName()"
+		[disabled]="!conversation.speaker?.editable"
+	>
+		<mat-icon>edit</mat-icon>
+		<span>Edit Name</span>
+	</button>
+</mat-menu>

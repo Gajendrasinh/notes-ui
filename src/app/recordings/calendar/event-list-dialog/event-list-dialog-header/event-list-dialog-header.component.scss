@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+
+  .filter {
+    width: 60%;
+    display: flex;
+
+    .date {
+      background: transparent;
+      border: none;
+      outline: none;
+      margin-bottom: 0;
+      width: 200px;
+      text-align: center;
+      color: #272526;
+    }
+
+    .arrow-icon {
+      font-size: 30px;
+    }
+  }
+
+  .close-btn {
+    margin-top: -32px;
+    margin-right: -12px;
+
+    .close-icon {
+      font-size: 20px;
+    }
+  }
+}

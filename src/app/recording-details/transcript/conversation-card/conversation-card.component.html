@@ -1,0 +1,14 @@
+<mat-card
+	class="conversation-card"
+	[ngClass]="{
+		clubbedCard: isClubbedCard$ | async
+	}"
+>
+	<app-conversation
+		*ngFor="let c of conversationCard.conversations; let i = index"
+		[ngClass]="{ 'card-seprator': i !== conversationCard.conversations.length }"
+		[conversation]="c"
+		[isEven]="i % 2 === 0"
+		[conversationCardId]="conversationCard.id"
+	></app-conversation>
+</mat-card>

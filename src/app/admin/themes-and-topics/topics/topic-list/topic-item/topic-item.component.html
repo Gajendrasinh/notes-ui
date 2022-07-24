@@ -1,0 +1,27 @@
+<mat-card *ngIf="topic">
+    <mat-card-header>
+        <div class="topic-name">
+            {{topic.name}}
+        </div>
+        <div class="theme-name">
+            <!-- Themes: <b>2</b> -->
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="container">
+            <mat-chip-list>
+                <div class="topic-content">
+                    <mat-chip #matChip="matChip" *ngFor="let k of topic.keywords">
+                        {{k.name}}
+                    </mat-chip>
+                </div>
+            </mat-chip-list>
+        </div>
+        <div class="more-menu">
+            <!-- <mat-icon *ngIf="!topic.isDefault" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-menu #menu="matMenu" class="menu-panel">
+                <button mat-menu-item (click)="openEditTopicDialog(topic.id)"> <mat-icon>edit</mat-icon> Edit</button>
+            </mat-menu> -->
+        </div>
+    </mat-card-content>
+</mat-card>

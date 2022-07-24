@@ -1,0 +1,15 @@
+.dialog-header{
+    display: flex;
+    justify-content: space-between;
+    span{
+        cursor: pointer;
+    }
+}
+.Recommendation-massage{
+    padding: 20px 0px 0px 0px;
+    color: red;
+    font-weight: 590;
+    .massage{
+        color: #515152;
+    }
+}

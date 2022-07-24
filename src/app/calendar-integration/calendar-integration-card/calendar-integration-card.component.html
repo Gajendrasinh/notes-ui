@@ -1,0 +1,61 @@
+<mat-card class="card mat-elevation-z4">
+	<div class="icons-and-titles">
+		<div class="image">
+			<img
+				class="calendar"
+				[src]="getAssetsPath('/assets/svgs/google-calendar.svg')"
+			/>
+			<img
+				class="drive"
+				[src]="getAssetsPath('/assets/svgs/google_drive_logo.svg')"
+			/>
+		</div>
+		<div>
+			<div class="title">Google Calendar & Drive</div>
+			<ng-container *ngIf="!connectedIds?.length; else connectedAccounts">
+				<div class="sub-title">
+					Connect your google calendars to sync events and auto-schedule
+					recordings.
+				</div>
+			</ng-container>
+			<ng-template #connectedAccounts>
+				<div class="connected-with">Connected with:</div>
+				<div class="connected-accounts-list">
+					<div
+						class="connected-account sub-title"
+						*ngFor="let connectedUsers of connectedIds; index as i"
+					>
+						<mat-icon class="check">check</mat-icon>
+						<span> {{ connectedUsers.email || "Sync in progress ..." }}</span>
+						<a
+							href="javascript:void(0)"
+							tabindex="-1"
+							class="disconnect warn"
+							(click)="handleDisconnect(connectedUsers.id)"
+						>
+							(Disconnect)
+						</a>
+					</div>
+				</div>
+			</ng-template>
+
+			<div class="connect-btn" *ngIf="!connectedIds?.length">
+				<b>
+					<a
+						href="javascript:void(0)"
+						tabindex="-1"
+						(click)="handleConnect()"
+						>{{
+							connectedIds?.length
+								? "Connect another account"
+								: "Connect Calendar"
+						}}</a
+					>
+				</b>
+			</div>
+		</div>
+	</div>
+	<div class="error-message">
+		<mat-error>{{ errorCalendarAlreadyConnected }}</mat-error>
+	</div>
+</mat-card>

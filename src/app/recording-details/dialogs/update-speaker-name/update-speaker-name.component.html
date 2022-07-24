@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Update Speaker Name</h2>
+<form [formGroup]="speakerFormGroup">
+<mat-dialog-content class="mat-typography">
+        <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstName" maxlength="35">
+            <mat-error> First name missing. </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName" maxlength="35">
+            <mat-error>Last name missing.</mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-flat-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="primary" (click)="handleUpdate()">Update</button>
+    </mat-dialog-actions>
+</form>

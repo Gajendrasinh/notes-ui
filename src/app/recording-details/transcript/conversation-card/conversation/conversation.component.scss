@@ -1,0 +1,180 @@
+.card {
+	position: relative;
+}
+.conversation-container {
+	position: relative;
+}
+
+.conversation {
+	display: grid;
+	grid-template-columns: 85px 1fr;
+
+	.conversationTime {
+		margin-bottom: 12px;
+	}
+
+	&.even {
+		.conversationTime {
+			background-color: #d5e3f4;
+		}
+	}
+	&.odd {
+		.conversationTime {
+			background-color: #e3d5f4;
+		}
+	}
+}
+.right {
+	margin-bottom: 15px;
+
+	.speakerName {
+		display: flex;
+	}
+}
+.conversationTime {
+	width: 55px;
+	padding: 2px 8px;
+	justify-content: center;
+	border-radius: 11.5px;
+}
+input.conversationUserName {
+	outline: none;
+	width: 90%;
+	font-size: 16px;
+	cursor: pointer;
+	border: 1px solid transparent;
+	font-weight: 600;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.2px;
+	color: #231f20;
+	padding: 5px;
+
+	&:read-only {
+		cursor: text;
+	}
+}
+input.conversationUserName.editable {
+	&:read-write {
+		border: 1px solid #eee;
+		border-radius: 5px;
+		background-color: #f5f5f5;
+		padding: 5px;
+		cursor: auto;
+	}
+}
+.userNameInput {
+	display: flex;
+	align-items: center;
+
+	.editIcon {
+		display: none;
+		cursor: pointer;
+	}
+
+	.mat-icon-button {
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		margin-left: -30px;
+		color: #777;
+		cursor: pointer;
+	}
+
+	&:hover {
+		.editIcon {
+			display: block;
+			cursor: pointer;
+		}
+		input.conversationUserName.editable {
+			border: 1px solid #eee;
+			border-radius: 5px;
+			background-color: #f5f5f5;
+			padding: 5px;
+			cursor: auto;
+		}
+	}
+}
+
+.conversationMessage {
+	// opacity: 0.8;
+	font-style: normal;
+	line-height: 1.7;
+	// color: #53606a;
+	border: 1px solid transparent;
+	padding: 2px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: -0.18px;
+	color: #595959;
+}
+/* p.conversationMessage:hover{
+    border: 1px solid var(--do-primary-color);
+    border-radius: var(--do-card-radius);
+} */
+textarea.conversationMessage {
+	width: 100%;
+	resize: none;
+	font-family: var(--do-global-font);
+	font-size: 14px;
+	// padding: 2px;
+	&:focus {
+		outline: none;
+		border: 1px solid var(--do-primary-color);
+		border-radius: var(--do-card-radius);
+	}
+}
+::ng-deep .speakerListMenu {
+	max-height: 200px !important;
+}
+::ng-deep .speakerAutoComplete {
+	.mat-option {
+		font-size: 15px;
+		height: 34px;
+	}
+}
+
+.dialog-header {
+	display: grid;
+	grid-template-columns: 50px 1fr auto;
+	width: 100%;
+	align-items: center;
+
+	.mat-card-subtitle {
+		margin-left: 5px;
+		font-size: 12px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -0.15px;
+		color: #a6a7ac;
+	}
+}
+
+.dialog-content {
+	display: grid;
+	grid-template-columns: 50px 1fr;
+	width: 100%;
+}
+mat-card.mat-card mat-card-header {
+	border-bottom: 1px solid #e5e5e5;
+	margin: 0px 15px 0px 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+mat-card-content {
+	// border-bottom: 2px solid #ddd;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+::ng-deep .tracker-highlight {
+	color: #2f80ed;
+}
+.activeCard {
+	border: solid 2px #5ad9f4;
+}

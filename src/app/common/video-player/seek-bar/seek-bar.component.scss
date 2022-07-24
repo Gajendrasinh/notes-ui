@@ -1,0 +1,52 @@
+@import "../../../../styles-color.scss";
+
+.progress-bar {
+    height: 5px;
+    width: 100%;
+    position: relative;
+
+    &:hover,
+    &.active {
+      height: 5px;
+      cursor: pointer;
+      .progress {
+        height: 5px;
+      }
+      .handler {
+        visibility: visible;
+      }
+    }
+    .handler {
+      visibility: hidden;
+      width: 13px;
+      height: 13px;
+      background-color: #0095fa;
+      position: absolute;
+      z-index: 99;
+      user-select: none;
+      outline: 0;
+      border-radius: 50%;
+      top: -4px;
+    }
+    .progress {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      height: 3px;
+      transform-origin: 0 0;
+    }
+
+    .bg {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scaleX(1);
+    }
+
+    .load {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .play {
+      background: $app-primary;
+    }
+  }

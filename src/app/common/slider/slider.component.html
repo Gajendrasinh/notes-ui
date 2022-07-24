@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div #container class="container" (click)="handleClick($event)">
+    <div
+      #handle
+      draggable="true"
+      class="handle"
+      (mousedown)="handlerMouseDown($event)"
+      (mouseup)="handlerMouseUp()"
+      [style.left]="
+        volume * container.offsetWidth -
+        handle.offsetWidth / 2 +
+        'px'
+      "
+    ></div>
+    <div
+      class="progress"
+      [style.transform]="'scaleX(' + volume + ')'"
+    ></div>
+  </div>
+</div>

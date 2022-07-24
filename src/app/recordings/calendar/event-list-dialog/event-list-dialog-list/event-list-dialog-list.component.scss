@@ -1,0 +1,45 @@
+.wrapper {
+  padding: 16px 0;
+
+  .event {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .time {
+      width: 145px;
+    }
+
+    .title {
+      width: 190px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .participants {
+      width: 58px;
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-right: 4px;
+      }
+    }
+
+    .action {
+      width: 110px;
+    }
+  }
+
+  .divider {
+    width: 1px;
+    height: 28px;
+    background-color: #adadad;
+    margin: 0 16px;
+  }
+}

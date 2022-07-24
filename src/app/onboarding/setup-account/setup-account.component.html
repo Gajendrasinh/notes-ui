@@ -1,0 +1,82 @@
+<form [formGroup]="accountSetupForm">
+	<div class="page-container">
+		<div class="form-group">
+			<do-input label="Organization Name">
+				<input
+					matInput
+					type="text"
+					formControlName="organizationName"
+					placeholder="Organization Name"
+					maxlength="50"
+				/>
+				<mat-error *ngIf="accountSetupForm.get('organizationName') as control">
+					<ng-container
+						*ngIf="control?.touched && control?.hasError('required')"
+						>Organization name missing.
+					</ng-container>
+					<ng-container
+						*ngIf="control?.touched && control?.hasError('pattern')"
+					>
+						Invalid name. allowed only - , .
+					</ng-container>
+				</mat-error>
+			</do-input>
+		</div>
+		<div class="form-group">
+			<do-input label="Website">
+				<input
+					matInput
+					type="text"
+					formControlName="website"
+					placeholder="Website"
+				/>
+				<mat-error *ngIf="accountSetupForm.get('website') as control">
+					<ng-container
+						*ngIf="control?.touched && control?.hasError('required')"
+					>
+						Website missing.
+					</ng-container>
+					<ng-container
+						*ngIf="control?.touched && control?.hasError('pattern')"
+					>
+						Invalid website address.
+					</ng-container>
+				</mat-error>
+			</do-input>
+		</div>
+
+		<div class="form-group">
+			<do-input label="Your Title">
+				<input
+					matInput
+					type="text"
+					formControlName="designation"
+					placeholder="Your Title"
+					maxlength="30"
+				/>
+				<mat-error *ngIf="accountSetupForm.get('designation') as control">
+					<ng-container
+						*ngIf="control?.touched && control?.hasError('required')"
+					>
+						Your title missing.
+					</ng-container>
+					<ng-container
+						*ngIf="control?.touched && control?.hasError('pattern')"
+					>
+						Invalid Title. allowed only - , .
+					</ng-container>
+				</mat-error>
+			</do-input>
+		</div>
+	</div>
+	<footer>
+		<button
+			mat-flat-button
+			color="primary"
+			[disabled]="accountSetupForm.invalid"
+			(click)="handleNext()"
+		>
+			NEXT
+		</button>
+	</footer>
+</form>

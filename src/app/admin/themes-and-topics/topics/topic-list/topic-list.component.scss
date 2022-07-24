@@ -1,0 +1,16 @@
+.topic-list-container {
+  margin-top: 10px;
+  position: relative;
+
+  .virtual-list {
+    height: calc(100vh - 320px);
+  }
+
+  .list-item {
+    margin-bottom: 12px;
+  }
+}
+
+:host ::ng-deep .scrollable-content{
+  padding: 0px 10px !important;
+}

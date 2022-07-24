@@ -1,0 +1,26 @@
+<mat-card class="card">
+    <ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+    <mat-card-header> Action Items </mat-card-header>
+    <mat-card-content>
+        <ng-container *ngIf="actionItems$ | async as actionItems">
+            <ng-container *ngIf="messageString && !actionItems?.length; then noData; else content"></ng-container>
+            <ng-template #content>
+                <div class="wrapper" *ngFor="let a of actionItems; let i = index">
+                    <div class="action-count">
+                        {{i+1 | number : '2.0-0' }}
+                        <!-- <ngx-avatar  [value]="i + 1 | number : '2.0-0' " [bgColor]="'#FFF'" [fgColor]="'#000000'" [size]="'44'"></ngx-avatar> -->
+                    </div>
+                    <div>
+                        <div class="speaker"
+                            [ngStyle]="{'color': a.speaker.isOrgUser === false ? '#27ae60' : '#2f80ed' }">
+                            {{a.speaker.name || a.speaker.emailId }}</div>
+                        <div class="action">{{a.action}}</div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #noData>
+                <div class="empty-message" *ngIf="messageString"> {{messageString}} </div>
+            </ng-template>
+        </ng-container>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,9 @@
+<mat-card>
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header>Account Details</mat-card-header>
+	<p class="sub-title">Details of the account</p>
+	<app-account-details
+		*ngIf="accountDetails"
+		[account]="accountDetails"
+	></app-account-details>
+</mat-card>

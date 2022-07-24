@@ -1,0 +1,84 @@
+mat-card {
+	width: 70%;
+	height: auto;
+	max-height: 100%;
+	margin: 0 auto;
+	padding-bottom: 30px;
+
+	mat-card-header {
+		border-bottom: none !important;
+		font-size: 20px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		color: #231f20;
+		padding: 35px 0 0px 25px !important;
+	}
+
+	mat-card-content {
+		padding: 0px 15px;
+		.form-content {
+			height: auto;
+			overflow-y: scroll;
+			margin-bottom: 10px;
+		}
+		.form-control-two-grid {
+			display: grid;
+			grid-template-columns: 50% 50%;
+
+			.form-group {
+				display: flex;
+				flex-direction: column;
+				padding: 0px 10px;
+			}
+		}
+		.form-btn {
+			padding: 0 15px 0 15px;
+			align-items: flex-start;
+			.delete-account-btn {
+				background-color: #f34162;
+				color: white;
+				margin-right: 10px;
+				width: 48%;
+			}
+			.edit-changePassword-btn {
+				font-weight: 550;
+				color: #4184f3;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+p.sub-title {
+	padding: 10px 0px 20px 25px;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	color: #949599;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	background-color: #fdfdff;
+}
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+	color: #d5d4df !important;
+}
+:host ::ng-deep .mat-input-element:disabled,
+.mat-form-field-type-mat-native-select.mat-form-field-disabled
+	.mat-form-field-infix::after {
+	font-weight: 500;
+	color: #22326b;
+}
+
+:host ::ng-deep do-input .do-input-label {
+	font-size: 20px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	color: #231f20;
+}

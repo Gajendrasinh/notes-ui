@@ -1,0 +1,26 @@
+:host {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ob-card {
+	width: 63vw;
+	height: 75vh;
+	display: grid;
+	grid-template-columns: 40% 60%;
+	padding: 0px;
+	border-radius: var(--do-card-radius);
+	border: none;
+
+	.right-side-panel {
+		padding: 0px 48px;
+	}
+}
+
+@media all and (max-width: 1600px) and (min-width: 1200px) {
+	.ob-card {
+		.right-side-panel {
+			padding: 0px 26px;
+		}
+	}
+}

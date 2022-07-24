@@ -1,0 +1,166 @@
+<app-auth-wrapper>
+	<div class="form-container">
+		<div>
+			<div class="heading-4 text-neutral-8 font-weight-500">
+				Sign up to DataOrb
+			</div>
+			<div class="form-sub-title body-medium text-neutral-6 font-weight-500">
+				<span> Already a member? </span>
+				<a routerLink="/login" class="text-info font-weight-500"> Sign in </a>
+			</div>
+			<div class="form-content">
+				<form [formGroup]="signUpForm">
+					<do-input label="Work E-mail">
+						<input
+							matInput
+							type="email"
+							formControlName="username"
+							placeholder="name@company.com"
+						/>
+						<mat-error>
+							<ng-container
+								*ngIf="signUpForm.get('username')?.hasError('required')"
+								>Work e-mail address missing.
+							</ng-container>
+							<ng-container
+								*ngIf="signUpForm.get('username')?.hasError('email')"
+								>Invalid work e-mail address.
+							</ng-container>
+						</mat-error>
+					</do-input>
+
+					<div class="row">
+						<do-input class="col-6" label="First Name">
+							<input
+								matInput
+								type="text"
+								formControlName="firstName"
+								placeholder="John"
+								maxlength="35"
+							/>
+							<mat-error>
+								<ng-container
+									*ngIf="signUpForm.get('firstName')?.hasError('required')"
+									>First name missing.
+								</ng-container>
+							</mat-error>
+						</do-input>
+
+						<do-input class="col-6" label="Last Name">
+							<input
+								matInput
+								type="text"
+								formControlName="lastName"
+								placeholder="Doe"
+								maxlength="35"
+							/>
+							<mat-error>
+								<ng-container
+									*ngIf="signUpForm.get('lastName')?.hasError('required')"
+									>Last name missing.
+								</ng-container>
+							</mat-error>
+						</do-input>
+					</div>
+
+					<do-input label="Password">
+						<input
+							matInput
+							[type]="isPasswordShow ? 'password' : 'text'"
+							id="password"
+							formControlName="password"
+							maxlength="16"
+							(keyup)="handleCapsLock($event)"
+							placeholder="8+ characters, 1 capital letter, 1 Special character "
+							(focus)="showPasswordStrength()"
+						/>
+						<div class="capsLock" matSuffix>
+							<mat-icon [ngClass]="{ showCapsLock: isCapsLockActive }"
+								>arrow_upward</mat-icon
+							>
+						</div>
+						<mat-icon matSuffix (click)="passwordShow()">{{
+							isPasswordShow ? "visibility_off" : "visibility"
+						}}</mat-icon>
+						<mat-error>
+							<mat-error>
+								<ng-container
+									*ngIf="signUpForm.get('password')?.hasError('required')"
+									>Password missing
+								</ng-container>
+							</mat-error>
+						</mat-error>
+					</do-input>
+
+					<div class="form-group">
+						<button
+							class="sign-in-btn"
+							mat-flat-button
+							color="primary"
+							type="submit"
+							(click)="singUpToAWS()"
+							[disabled]="!signUpForm.valid"
+						>
+							<mat-spinner *ngIf="isDisableSignUp" diameter="22"></mat-spinner>
+							Sign Up
+						</button>
+					</div>
+				</form>
+				<div class="form-group">
+					<button
+						class="google-btn"
+						mat-stroked-button
+						(click)="registrationTokenPost(); signInToGoogle()"
+						[disabled]="isDisableSignUp"
+					>
+						<img
+							class="googleLogo"
+							[src]="getAssetsPath('/assets/icons/google-icon.svg')"
+							alt="googleButton"
+						/>
+						Sign In with Google
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="password-strengh-container">
+			<div class="password-strengh" *ngIf="isPasswordStrength">
+				<div class="body text-neutral-8 font-weight-500">
+					Password Requirements
+				</div>
+				<br />
+				<span
+					[ngClass]="{
+						activeIcon: !signUpForm
+							.get('password')
+							?.hasError('min8CharRequired')
+					}"
+				>
+					<mat-icon>circle</mat-icon> Minimum 8 characters (numbers
+					allowed)</span
+				>
+				<br />
+				<span
+					[ngClass]="{
+						activeIcon: !signUpForm
+							.get('password')
+							?.hasError('min1UpperLowerCaseChar')
+					}"
+				>
+					<mat-icon>circle</mat-icon> Minimum 1 upper and lower case
+					letter</span
+				>
+				<br />
+				<span
+					[ngClass]="{
+						activeIcon: !signUpForm.get('password')?.hasError('min1SpecialChar')
+					}"
+				>
+					<mat-icon>circle</mat-icon> Minimum 1 special
+					character(.!@#$%^&*-_=+?)</span
+				>
+				<br />
+			</div>
+		</div>
+	</div>
+</app-auth-wrapper>

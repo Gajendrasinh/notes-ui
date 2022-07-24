@@ -1,0 +1,54 @@
+<mat-card class="do-card">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header class="heading-6 font-weight-500">
+		<div class="dialog-header">
+			<div>Talk Ratio</div>
+			<div class="org-wrapper">
+				<div class="client-details">
+					<ng-container *ngFor="let data of talkRatioData; let i = index">
+						<div
+							*ngIf="orgName"
+							class="circle"
+							[ngStyle]="{
+								'background-color': data.label ? '#2f80ed' : '#27ae60'
+							}"
+						></div>
+						<div class="label" *ngIf="orgName">
+							{{ data.label || "Others" }} - {{ data.value }}%
+						</div>
+
+						<div
+							*ngIf="nonOrgName"
+							class="circle"
+							[ngStyle]="{
+								'background-color': data.label ? '#2f80ed' : '#27ae60'
+							}"
+						></div>
+						<div class="label" *ngIf="nonOrgName">
+							{{ data.label || "Others" }} - {{ data.value }}%
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="do-card-container">
+			<div class="org-list">
+				<app-non-org-participant
+					*ngFor="let participant of nonOrgParticipants"
+					[avatarBgColor]="'#27ae60'"
+					[participant]="participant"
+				></app-non-org-participant>
+			</div>
+
+			<div class="app-non-org-participant">
+				<app-org-participant
+					*ngFor="let participant of orgParticipants"
+					[avatarBgColor]="'#2f80ed'"
+					[participant]="participant"
+				></app-org-participant>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>

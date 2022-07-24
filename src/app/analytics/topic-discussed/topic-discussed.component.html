@@ -1,0 +1,38 @@
+<mat-card class="do-card">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header class="heading-6 font-weight-500">
+		<div class="dialog-header">
+			<div>Topic Discussed</div>
+			<div class="org-wrapper">
+				<div class="client-details">
+					<ng-container *ngFor="let data of talkRatioData; let i = index">
+						<div
+							*ngIf="orgName"
+							class="circle"
+							[ngStyle]="{
+								'background-color': data.label ? '#2f80ed' : '#27ae60'
+							}"
+						></div>
+						<div class="label" *ngIf="orgName">
+							{{ data.label || "Others" }} - {{ data.value }}%
+						</div>
+
+						<div
+							*ngIf="nonOrgName"
+							class="circle"
+							[ngStyle]="{
+								'background-color': data.label ? '#2f80ed' : '#27ae60'
+							}"
+						></div>
+						<div class="label" *ngIf="nonOrgName">
+							{{ data.label || "Others" }} - {{ data.value }}%
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="do-card-container"></div>
+	</mat-card-content>
+</mat-card>

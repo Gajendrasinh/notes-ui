@@ -1,0 +1,30 @@
+<div class="do-card bg-neutral-1">
+	<div class="header" *ngIf="recordingDetails$ | async as recording" #Header>
+		<div class="left">
+			<div class="client-logo">
+				<!-- <img [src]="getAssetsPath('/assets/svgs/microsoft.svg')"> -->
+			</div>
+			<div class="transcript-search">
+				<app-transcript-search
+					(searchTranscript)="handleSearch($event)"
+				></app-transcript-search>
+			</div>
+		</div>
+		<div class="middle">
+			<div class="transcript-analytic-button">
+				<a class="text-info active">
+					<mat-icon class="text-info">insert_drive_file</mat-icon> Transcript
+				</a>
+			</div>
+			<div
+				class="transcript-analytic-button"
+				*ngIf="'analyticsModule' | featureAccess"
+			>
+				<a [routerLink]="['/analytics', recordingId]" class="">
+					<mat-icon class="">bar_chart</mat-icon> Analytics</a
+				>
+			</div>
+		</div>
+		<div class="right"></div>
+	</div>
+</div>

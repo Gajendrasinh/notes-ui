@@ -1,0 +1,77 @@
+section {
+	background-image: linear-gradient(to bottom, #2ea7fa, #2ea7fa);
+	height: 100%;
+	padding: 86.1px 57px 127px 48px;
+	color: white;
+	text-align: left;
+	h2 {
+		font-size: 31px;
+		font-weight: 500;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -0.41px;
+		margin: 0 33px 13.9px 0;
+	}
+
+	p {
+		margin: 13.9px 11px 60px 0;
+		font-size: 18px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: italic;
+		line-height: normal;
+		letter-spacing: -0.81px;
+	}
+
+	.steps-container {
+		padding: 20px 0;
+		margin-left: -10px;
+	}
+	.featured-img {
+		opacity: 0.5;
+		overflow: hidden;
+		position: absolute;
+		bottom: 0px;
+		left: -6px;
+		width: 100%;
+		max-width: 35%;
+		img {
+			width: 100%;
+			margin-bottom: -7px;
+		}
+	}
+}
+
+::ng-deep .onboarding-popup {
+	.mat-dialog-container,
+	.mat-dialog-content {
+		padding: 0 !important;
+		z-index: 1;
+		font-family: Poppins, sans-serif;
+	}
+}
+
+@media all and (max-width: 1600px) and (min-width: 1200px) {
+	section {
+		padding: 45px 40px 0px 40px;
+
+		h2 {
+			font-size: 24px;
+			margin: 0;
+		}
+
+		p {
+			margin: 10px 0px;
+			font-size: 16px;
+		}
+
+		.steps-container {
+			padding: 10px 0;
+		}
+
+		.featured-img {
+			max-width: 30%;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+<div class="navbar">
+    <!-- <div class="do-logo"></div> -->
+    <div class="nav-items">
+        <div class="nav-item" *ngFor="let item of navItems" [routerLink]="item.routerLink" routerLinkActive="active">
+            <mat-icon *ngIf="item.matIcon">{{item.matIcon}}</mat-icon>
+            <mat-icon *ngIf="item.svgIcon" [svgIcon]="item.svgIcon"></mat-icon>
+            <div>{{item.title}}</div>
+        </div>
+    </div>
+    <!-- <footer>DO Notes</footer> -->
+</div>

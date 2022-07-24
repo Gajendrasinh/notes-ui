@@ -1,0 +1,20 @@
+<div class="wrapper" *ngIf="events$ | async as events">
+  <recording-list-header class="header" [total]="events.length"></recording-list-header>
+  <ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+  <ng-container *ngIf="events.length; else EventsEmpty">
+    <virtual-scroller class="virtual-list" #scroll [items]="events" [enableUnequalChildrenSizes]="true">
+      <recording-list-item class="list-item" *ngFor="let events of scroll.viewPortItems" [recording]="events">
+      </recording-list-item>
+    </virtual-scroller>
+  </ng-container>
+  <ng-template #EventsEmpty>
+    <div class="empty-message" *ngIf="recordingErrorMassage else WelcomeNote "> <span>{{ recordingErrorMassage }} </span> </div>
+  </ng-template>
+</div>
+
+<!-- <ng-template #EventsEmpty>
+  <div *ngIf="totalEventsCount$ | async; else WelcomeNote"></div>
+</ng-template> -->
+<ng-template #WelcomeNote>
+  <app-welcome-note *ngIf="showWelcomeNote$ | async" ></app-welcome-note>
+</ng-template>

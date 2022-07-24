@@ -1,0 +1,41 @@
+.do-card {
+	min-height: 60px;
+	width: 100%;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.header {
+	width: 100%;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	.main-heading {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		padding-bottom: 2px;
+		margin-bottom: 5px;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: -0.23px;
+		color: #231f20;
+	}
+	.sub-heading {
+		display: flex;
+		align-items: center;
+		font-weight: normal;
+		letter-spacing: -0.18px;
+		color: #595959;
+		.user {
+			display: flex;
+			align-items: center;
+			mat-icon {
+				padding: 0px 30px 0px 20px;
+			}
+		}
+	}
+}

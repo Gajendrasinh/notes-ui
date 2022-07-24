@@ -1,0 +1,38 @@
+<mat-card class="do-card">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header class="heading-6 font-weight-500">
+		Talk Ratio
+	</mat-card-header>
+	<mat-card-content>
+		<div class="do-card-container">
+			<ng-container
+				*ngIf="messageString && !talkRatioData; then message; else content"
+			>
+			</ng-container>
+			<ng-template #message>
+				<div class="empty-message" *ngIf="messageString">
+					<span>{{ messageString }} </span>
+				</div>
+			</ng-template>
+			<ng-template #content>
+				<div
+					class="talk-ratio-container"
+					*ngFor="let data of talkRatioData; let i = index"
+				>
+					<div class="labels text-neutral-6 font-weight-500">
+						{{ data.label || "Others" }}
+					</div>
+					<div
+						class="bg-success talk-ratio-bar"
+						[ngStyle]="{
+							'width.%': data.value,
+							'background-color': data.label ? '#3182ed4d' : '#28af604d'
+						}"
+					>
+						<span class="font-weight-500">{{ data.value }} %</span>
+					</div>
+				</div>
+			</ng-template>
+		</div>
+	</mat-card-content>
+</mat-card>

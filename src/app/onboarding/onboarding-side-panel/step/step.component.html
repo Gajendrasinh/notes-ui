@@ -1,0 +1,12 @@
+<div class="step" *ngIf="step">
+	<div
+		class="step-icon flex-center"
+		[ngClass]="{ 'in-progress': step.inProgress }"
+	>
+		<span *ngIf="!step.complete; else CompleteIcon">{{ step.index + 1 }}</span>
+		<ng-template #CompleteIcon>
+			<mat-icon>check</mat-icon>
+		</ng-template>
+	</div>
+	<span class="title">{{ step.title }}</span>
+</div>

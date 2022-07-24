@@ -1,0 +1,30 @@
+<div class="container" *ngIf="userDetails">
+  <ngx-avatar
+    [size]="100"
+    [bgColor]="userAvtarBgColor"
+    [name]="displayName || ''"
+  ></ngx-avatar>
+  <!-- <div *ngIf="recordingDetails$ | async as recording">
+        <div class="user-name"> {{ recording.inviter.name || "Ravi Prajapati" }} </div>
+        <div class="user-email"> {{ recording.inviter.emailId || "ravi.p@dataorb.ai"}} </div>
+    </div> -->
+  <div class="user-name">
+    {{ userDetails.firstName }} {{ userDetails.lastName }}
+  </div>
+  <div class="user-email">{{ userDetails.email }}</div>
+  <!-- <button mat-stroked-button class="manage-account-btn" routerLink="/admin">
+    Manage your DO Account
+  </button> -->
+
+  <button *ngIf="'profleModue' | featureAccess" mat-stroked-button class="manage-account-btn" routerLink="/profile" [disabled]="activeProfileRoute" >
+    My Account
+  </button> 
+
+  <!-- <button mat-stroked-button class="manage-account-btn">
+        Change Password
+    </button> -->
+
+  <button mat-stroked-button class="sign-out-btn" (click)="signOut()">
+    Sign Out
+  </button>
+</div>

@@ -1,0 +1,7 @@
+<app-video-player
+	class="recording-video-player"
+	*ngIf="url"
+	[url]="url"
+	(playVideo)="onPlay()"
+	(playerHandlers)="registerPlayerHandlers($event)"
+></app-video-player>

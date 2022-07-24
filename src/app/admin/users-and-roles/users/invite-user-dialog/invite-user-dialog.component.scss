@@ -1,0 +1,128 @@
+.container {
+	padding: 0px;
+
+	.container-header {
+		font-size: 16px;
+		font-weight: 600;
+		color: #3e3e3f;
+		padding: 0px 0px 15px 0px;
+	}
+
+	.container-body {
+		height: 46vh;
+		overflow-y: scroll;
+		margin-bottom: 5px;
+		position: relative;
+
+		.form-control-two-grid {
+			display: grid;
+			grid-template-columns: 60% 40%;
+
+			.form-group {
+				display: flex;
+				flex-direction: column;
+				padding: 0 15px 0px 0px;
+				mat-error {
+					display: flex;
+					justify-content: left;
+					align-items: center;
+				}
+			}
+		}
+	}
+
+	.add-form-Btn {
+		font-weight: 600;
+		padding: 15px 0px 0px 0px;
+		color: #4184f3;
+		width: 100%;
+		text-align: right;
+		cursor: pointer;
+	}
+
+	.show {
+		visibility: visible;
+	}
+
+	.hidden {
+		visibility: hidden;
+	}
+
+	.error-container {
+		border: 1px solid #d40202;
+		background-color: #fed6d6;
+		color: #d40202;
+		width: 100%;
+		padding: 5px;
+		margin-top: 10px;
+		border-radius: var(--do-card-radius);
+	}
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+	padding: 10px;
+}
+
+.mat-dialog-title {
+	font-weight: 500;
+	font-size: 23px;
+	line-height: 35px;
+	color: #231f20;
+}
+
+.container-footer {
+	padding-top: 15px;
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
+	width: 100%;
+
+	button {
+		margin-left: 20px;
+		cursor: pointer;
+	}
+
+	.cancel-btn {
+		border: solid 1px #2f80ed;
+		color: #2f80ed;
+	}
+}
+
+mat-label {
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 10px;
+	color: #231f20;
+}
+
+mat-select {
+	display: flex;
+	padding: 24px 16px;
+	border: 1px solid #d0d0d0;
+	border-radius: 12px;
+	justify-content: space-between;
+	align-items: center;
+	height: 42px;
+	background: white;
+
+	&.mat-select-invalid {
+		border: 1px solid red;
+	}
+	&:focus-within {
+		border-color: #0095fa;
+	}
+}
+.mat-error {
+	font-size: 11px;
+}
+mat-spinner {
+	display: inline-block;
+	margin-left: -10px;
+	margin-right: 5px;
+}
+:host ::ng-deep {
+	.mat-progress-spinner circle,
+	.mat-spinner circle {
+		stroke: #fff;
+	}
+}

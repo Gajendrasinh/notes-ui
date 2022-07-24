@@ -1,0 +1,20 @@
+.wrapper {
+  width: 55%;
+  min-width: 800px;
+  min-height: calc(100vh - 75px);
+  position: relative;
+
+  .header {
+    display: block;
+  }
+
+  .virtual-list {
+    height: calc(100vh - 120px);
+  }
+
+  .list-item {
+    margin-bottom: 12px;
+    display: block;
+  }
+}
+

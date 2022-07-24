@@ -1,0 +1,72 @@
+<a
+  class="mat-card item mat-elevation-z0"
+  [routerLink]="['/recordings', recording.eventId]"
+  *ngIf="recording"
+  target="_blank"
+>
+  <div class="recording-duration">
+    <mat-icon class="event-type" svgIcon="videocam_outline"></mat-icon>
+    <!-- <mat-icon class="recording-type">{{
+    recording.type == "video" ? "videocam" : "call"
+  }}</mat-icon> -->
+    <div class="duration">
+      {{ recording.duration / 60 | number: "0.0-1" }}
+      mins
+    </div>
+  </div>
+  <div class="details">
+    <div
+      class="title"
+      matTooltip="{{ recording.name }}"
+      [matTooltipHideDelay]="200"
+      [matTooltipDisabled]="recording.name.length <= 60"
+    >
+      {{ recording.name }}
+    </div>
+    <div class="title-sub-text">
+      <div>
+        {{ recording.organization.name }}
+      </div>
+      <div>
+        <mat-icon>person_outline</mat-icon>&nbsp;{{
+          recording.inviter.name
+        }}
+      </div>
+      
+    </div>
+    <div class="btn-wrapper">
+      <button type="button" mat-flat-button> Questions ({{recording.questionCount ? recording.questionCount : 0}}) </button>
+      <!-- <button type="button" mat-flat-button> Next Steps ({{recording.trackerCount}}) </button> -->
+  </div>
+  </div>
+  <div class="other-info">
+    <!-- <div
+      class="title"
+      matTooltip="{{ recording.name }}"
+      [matTooltipHideDelay]="200"
+      [matTooltipDisabled]="recording.name.length <= 60"
+    >
+      {{ recording.name }}
+    </div> -->
+    <div class="sub-text">
+      <div class="icon-label">
+        <mat-icon class="icon">person_outline</mat-icon>
+        {{ recording.totalParticipant }}
+      </div>
+      <!-- <div class="icon-label">
+        <mat-icon class="icon">chat</mat-icon> {{ recording.commentCount ?  recording.commentCount : 0}} 
+      </div> -->
+    </div>
+    <div class="sub-text">
+      <div class="date">
+        <span *ngIf="recording.meetingTime===null ; else meetingTime">[All Day Event]</span>
+        <ng-template #meetingTime>{{ recording.meetingTime | dateWithLocalTimezone }}</ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="action">
+    <button mat-icon-button class="more-action" color="primary">
+      <mat-icon mat-list-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</a>

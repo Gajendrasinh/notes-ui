@@ -1,0 +1,44 @@
+<div class="transcript-search bg-neutral-2">
+	<div class="action-input">
+		<div class="prefix">
+			<mat-icon>search</mat-icon>
+			<input
+				class="bg-neutral-2"
+				[ngClass]="{ search: searchControl.value }"
+				#SearchInput
+				[formControl]="searchControl"
+				placeholder="Search in transcript"
+				value=""
+			/>
+		</div>
+
+		<div class="postfix" *ngIf="searchControl.value">
+			<ng-container *ngIf="searchResults$ | async as results">
+				<span class="searchResultCount">
+					{{ activeSearchIndex + 1 }} / {{ results?.length }} results
+				</span>
+				<ng-container *ngIf="results?.length">
+					<button
+						#ArrowNext
+						mat-icon-button
+						[disabled]="activeSearchIndex === results.length - 1"
+						(click)="nextPrevSearch(results, true)"
+					>
+						<mat-icon>keyboard_arrow_down</mat-icon>
+					</button>
+					<button
+						#ArrowPreview
+						mat-icon-button
+						[disabled]="activeSearchIndex === 0"
+						(click)="nextPrevSearch(results)"
+					>
+						<mat-icon>keyboard_arrow_up</mat-icon>
+					</button>
+				</ng-container>
+			</ng-container>
+			<button mat-icon-button (click)="clearSearch()">
+				<mat-icon>clear</mat-icon>
+			</button>
+		</div>
+	</div>
+</div>

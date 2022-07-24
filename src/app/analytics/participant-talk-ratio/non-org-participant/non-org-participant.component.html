@@ -1,0 +1,30 @@
+<div class="participant" *ngIf="participant">
+	<div class="dialog-header">
+		<ngx-avatar
+			[size]="40"
+			[name]="participant.name"
+			[bgColor]="avatarBgColor"
+		></ngx-avatar>
+		<div>
+			<div class="userNameInput">
+				{{ participant.name }}
+			</div>
+			<mat-card-subtitle class="text-neutral-7">{{
+				participant.designation || "Unknown"
+			}}</mat-card-subtitle>
+		</div>
+
+		<div class="talk-ratio-container">
+			<div
+				class="bg-success talk-ratio-bar"
+				[ngStyle]="{
+					'width.%': participant.talkRatio,
+					'background-color':
+						participant.talkRatio > 0 ? 'rgba(40, 175, 96, 0.3)' : '#ffffff'
+				}"
+			>
+				<span class="font-weight-500">{{ participant.talkRatio || 0 }}%</span>
+			</div>
+		</div>
+	</div>
+</div>

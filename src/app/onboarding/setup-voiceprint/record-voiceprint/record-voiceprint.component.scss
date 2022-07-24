@@ -1,0 +1,84 @@
+.voice-print-footer {
+	margin-top: 5px;
+	height: 60px;
+	padding: 9px 40px 8px 26px;
+	border-radius: 8px;
+	border: solid 0.4px #b3bcff;
+	background-color: #f4f7fa;
+	display: flex;
+	align-items: center;
+
+	&.denied {
+		color: red;
+		.mat-icon {
+			margin-right: 5px;
+		}
+	}
+
+	.voice-record-btn-msg {
+		font-size: 14px;
+		font-weight: 300;
+		font-style: italic;
+		color: #9a9a9a;
+		mat-icon {
+			color: #5ad9f4;
+			padding: 0px 15px;
+			font-size: 30px;
+			align-items: center;
+		}
+	}
+	.voice-record-btn {
+		width: 25px;
+		height: 25px;
+		background-color: white;
+		border: none;
+		border-radius: 20px;
+		margin-right: 10px;
+		box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.06);
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		outline: none;
+		mat-icon {
+			color: red;
+			font-size: 18px;
+			padding-top: 3px;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	.audio-visualizer {
+		width: 100%;
+		height: 45px;
+	}
+}
+.recordingTime {
+	font-weight: 590;
+	font-stretch: normal;
+	color: #000000;
+	text-align: right;
+	width: 100%;
+	padding: 5px;
+}
+do-audio-player {
+	width: 100%;
+}
+
+do-audio-player ::ng-deep .do-card {
+	padding: 0px;
+	box-shadow: none;
+	background-color: transparent;
+	border-radius: 0px;
+}
+
+do-audio-player ::ng-deep .wrapper .player-container {
+	background-color: #f4f7fa !important;
+}
+
+@media all and (max-width: 1600px) and (min-width: 1200px) {
+	.voice-print-footer {
+		padding: 7px 0 7px 10px;
+		height: 40px;
+	}
+}

@@ -1,0 +1,34 @@
+<mat-card class="ob-card">
+	<app-onboarding-side-panel
+		class="sidepanel"
+		[steps]="steps"
+	></app-onboarding-side-panel>
+
+	<div class="right-side-panel" [ngSwitch]="activeStepIndex">
+		<app-setup-account
+			*ngSwitchCase="stepIndexEnum.SETUP_ACCOUNT"
+			(next)="saveAccount($event)"
+			[account]="state?.account"
+			[designations]="designations"
+		>
+		</app-setup-account>
+		<app-setup-voiceprint
+			*ngSwitchCase="stepIndexEnum.SETUP_VOICE_PRINT"
+			[currentUserInfo]="currentUserInfo"
+			(save)="saveVoicePrint($event)"
+			[isDisableSave]="isDisableSave"
+			(back)="handleBack()"
+			[currentOnboardingStep]="currentOnboardingStep"
+		></app-setup-voiceprint>
+		<app-sync-calender
+			*ngSwitchCase="stepIndexEnum.SYNC_CALENDER"
+			[isInvitedUser]="state?.account?.invitedUser"
+			(next)="handleNext()"
+			(calendarNext)="handleCalendarNextStep()"
+			(back)="handleBack()"
+			(skip)="handleSkip()"
+			(completed)="handleSyncCompleted()"
+		>
+		</app-sync-calender>
+	</div>
+</mat-card>

@@ -1,0 +1,14 @@
+<section>
+	<header>
+		<h2>Welcome to DataOrb</h2>
+		<p>Please complete the following steps to set up your account.</p>
+	</header>
+
+	<nav class="steps-container">
+		<app-step *ngFor="let s of steps" [step]="s"></app-step>
+	</nav>
+
+	<div class="featured-img">
+		<img [src]="getAssetsPath('/assets/icons/Square-Dark.svg')" />
+	</div>
+</section>

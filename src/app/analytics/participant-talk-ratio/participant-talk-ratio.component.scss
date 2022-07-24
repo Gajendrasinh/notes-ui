@@ -1,0 +1,64 @@
+.do-card {
+	width: 80%;
+	min-height: 150px;
+	margin: 0 auto;
+	mat-card-header {
+		font-size: 18px;
+		font-weight: 600;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+		letter-spacing: -0.23px;
+		color: #595959;
+		width: 100%;
+
+		.dialog-header {
+			display: grid;
+			grid-template-columns: 100%;
+			width: 100%;
+			align-items: center;
+
+			.org-wrapper {
+				margin-left: 2px;
+				margin-top: 10px;
+				font-size: 12px;
+				font-weight: 500;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: -0.15px;
+				color: #949599;
+
+				.client-details {
+					display: grid;
+					grid-template-columns: 25px 150px 25px auto;
+					width: 100%;
+					font-size: 12px;
+					font-weight: 500;
+					font-stretch: normal;
+					font-style: normal;
+					line-height: normal;
+					letter-spacing: -0.15px;
+					color: #949599;
+
+					.circle {
+						width: 12px;
+						height: 12px;
+						display: inline-block;
+						border-radius: 50%;
+					}
+				}
+			}
+		}
+	}
+	mat-card-content {
+		height: calc(100% - 85px);
+		overflow-y: auto;
+		height: 310px;
+	}
+}
+.do-card .do-card-container {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	width: 100%;
+}

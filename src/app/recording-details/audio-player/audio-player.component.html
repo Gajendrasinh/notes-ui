@@ -1,0 +1,13 @@
+<mat-card class="root">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<do-audio-player
+		*ngIf="recordingPath$ | async as recordingPath"
+		[src]="recordingPath"
+		[customOptions]="audioPlayerCustomOptions"
+		(playAudio)="onPlay()"
+		(initialized)="handlePlayerInitialized()"
+		(playerHandlers)="registerPlayerHandlers($event)"
+		(changeCurrentTime)="playerCurrentTime($event)"
+	>
+	</do-audio-player>
+</mat-card>

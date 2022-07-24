@@ -1,0 +1,28 @@
+.step {
+	margin: 10px;
+	text-align: left;
+	display: grid;
+	grid-template-columns: 40px auto;
+	align-items: center;
+
+	.step-icon {
+		border: 1px solid white;
+		padding: 5px;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		text-align: center;
+		font-weight: 500;
+
+		&.in-progress {
+			color: var(--do-accent-color);
+			background-color: white;
+			color: #2f80ed;
+			font-weight: 500;
+		}
+		mat-icon {
+			color: #0219ce;
+			font-weight: 600;
+		}
+	}
+}

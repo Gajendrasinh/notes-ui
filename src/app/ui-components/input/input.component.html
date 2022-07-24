@@ -1,0 +1,21 @@
+<div class="do-input-wrapper do-input" [class.do-input-invalid]="_control?.errorState">
+    <div class="do-input-label">{{label}}</div>
+    <div class="do-input-flex">
+        <div class="do-input-prefix" *ngIf="prefixes?.length">
+            <ng-content select="[matPrefix]"></ng-content>
+        </div>
+
+        <div class="do-input-infix">
+            <ng-content select="input"></ng-content>
+        </div>
+
+        <div class="do-input-suffix" *ngIf="suffixes?.length">
+            <ng-content select="[matSuffix]"></ng-content>
+        </div>
+    </div>
+    <div class="do-input-subscript-wrapper">
+        <div class="do-input-error" [@transitionMessages]="'enter'" *ngIf="_control?.errorState">
+            <ng-content select="mat-error"></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<ng-container *ngIf="topics$ | async as topics">
+	<ng-container
+		*ngIf="messageString && !topics?.length; then message; else content"
+	></ng-container>
+	<ng-template #message>
+		<div class="empty-message" *ngIf="messageString">
+			<span>{{ messageString }} </span>
+		</div>
+	</ng-template>
+
+	<ng-template #content>
+		<div class="container">
+			<mat-chip-list>
+				<div class="topic-content">
+					<mat-chip
+						*ngFor="let t of topics | slice: 0:MAX_TRACKER_WITHOUT_EXPAND"
+						#matChip="matChip"
+						(click)="toggleSelectTopic(t)"
+						[ngClass]="{ selectedTopic: t.isSelected }"
+					>
+						{{ t.name }} ({{ t.count }})
+					</mat-chip>
+					<ng-container
+						*ngIf="topics.length >= MAX_TRACKER_WITHOUT_EXPAND && isExpanded"
+					>
+						<mat-chip
+							*ngFor="let t of topics | slice: MAX_TRACKER_WITHOUT_EXPAND"
+							#matChip="matChip"
+							(click)="toggleSelectTopic(t)"
+							[ngClass]="{ selectedTopic: t.isSelected }"
+						>
+							{{ t.name }} ({{ t.count }})
+						</mat-chip>
+					</ng-container>
+				</div>
+			</mat-chip-list>
+			<div class="expand-collapse">
+				<mat-icon
+					class="expand-collapse-icons"
+					*ngIf="topics.length >= MAX_TRACKER_WITHOUT_EXPAND"
+					(click)="toggleExpandView()"
+				>
+					{{ isExpanded ? "keyboard_arrow_up" : "keyboard_arrow_down" }}
+				</mat-icon>
+			</div>
+		</div>
+	</ng-template>
+</ng-container>

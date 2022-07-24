@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <ng-container
+    *ngIf="data; then renderCalender; else renderSetup"
+  ></ng-container>
+  <ng-template #renderCalender>
+    <ng-container
+      *ngIf="isSynchronizing; then renderSync; else renderData"
+    ></ng-container>
+    <ng-template #renderSync>
+      <div class="message-wrapper">
+        <div class="title">Calendar sync is in progress</div>
+        <div class="message">
+          Scheduled events will be visible <br />
+          here once sync is completed
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #renderData>
+        <div class="event-wrapper">
+            <div class="event-list">
+                <div class="event">
+                    <span class="time">11:20 am</span>
+                    <span class="title">Event Title </span>
+                </div>
+                <div class="event">
+                    <span class="time">11:20 am</span>
+                    <span class="title">Event Title </span>
+                </div>
+            </div>
+            <div class="event-footer">
+                <div class="title"> Scheduled Events </div>
+                <div class="actions">
+                    <button mat-button color="primary" (click)="onViewAll()">View All</button>
+                    <span class="flex-item-spacer"></span>
+                    <button class="setting" mat-icon-button (click)="onSyncCalendar()">
+                        <mat-icon>settings</mat-icon>
+                      </button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+  </ng-template>
+  <ng-template #renderSetup>
+    <div class="message-wrapper">
+      <div class="message">No calendar synced</div>
+      <div class="sync-calendar-btn">
+        <button mat-raised-button color="primary" (click)="onSyncCalendar()">
+          SYNC CALENDAR
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

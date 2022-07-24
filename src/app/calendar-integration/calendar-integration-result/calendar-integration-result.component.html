@@ -1,0 +1,5 @@
+<div class="wrapper">
+	<p *ngIf="isLoading">Loading...</p>
+	<p *ngIf="!isLoading && !isError">Success!</p>
+	<p *ngIf="!isLoading && isError"></p>
+</div>

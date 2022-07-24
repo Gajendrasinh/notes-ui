@@ -1,0 +1,16 @@
+.container {
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr;
+
+	.container-body {
+		display: grid;
+		overflow: auto;
+		grid-template-rows: fit-content(40%);
+		margin: 10px 40px;
+
+		.participant-talk-ratio {
+			margin: 10px 0;
+		}
+	}
+}

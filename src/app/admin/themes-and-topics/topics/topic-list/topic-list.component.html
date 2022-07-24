@@ -1,0 +1,10 @@
+<div class="topic-list-container">
+
+  <ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+  <ng-container *ngIf="topicList$ | async as topics">
+    <virtual-scroller class="virtual-list" #scroll [items]="topics" [enableUnequalChildrenSizes]="true">
+      <app-topic-item class="list-item" *ngFor="let topic of scroll.viewPortItems" [topic]="topic"></app-topic-item>
+    </virtual-scroller>
+  </ng-container>
+
+</div>

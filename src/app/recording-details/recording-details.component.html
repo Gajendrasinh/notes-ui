@@ -1,0 +1,36 @@
+<div class="container bg-neutral-2">
+	<app-recording-details-header
+		[navItems]="navItems"
+	></app-recording-details-header>
+	<div class="container-body">
+		<div class="widget-container">
+			<div class="left-container">
+				<div class="videoPlayer-meetingDetails">
+					<recording-details-video-player
+						class="video-player"
+						*ngIf="recordingType === 'VIDEO'"
+					></recording-details-video-player>
+					<app-audio-player
+						*ngIf="recordingType === 'AUDIO'"
+					></app-audio-player>
+					<div class="meeting-details">
+						<app-meeting-details></app-meeting-details>
+					</div>
+				</div>
+				<div class="actionItem-questionList">
+					<div>
+						<app-question-lists></app-question-lists>
+					</div>
+				</div>
+			</div>
+
+			<div class="middel-container">
+				<app-transcript-filters></app-transcript-filters>
+				<app-transcript></app-transcript>
+			</div>
+			<div class="right-container">
+				<app-talk-ratio></app-talk-ratio>
+			</div>
+		</div>
+	</div>
+</div>

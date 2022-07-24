@@ -1,0 +1,77 @@
+.transcript-search {
+	display: grid;
+	grid-template-columns: 100%;
+	border-radius: 4px;
+
+	.action-buttons {
+		justify-content: stretch;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 5px;
+
+		button {
+			width: 100%;
+			height: 50px;
+			border-radius: 10px;
+			border: none;
+
+			&.activeBtn {
+				border: 2px solid #4184f3;
+			}
+		}
+	}
+
+	.action-input {
+		width: 100%;
+		height: 50px;
+		display: flex;
+		align-content: center;
+		justify-content: space-between;
+		padding: 8px;
+
+		.prefix {
+			display: flex;
+			align-items: center;
+			grid-gap: 6px;
+		}
+
+		input {
+			outline: none;
+			border: none;
+			width: 100%;
+			margin-right: 5px;
+			// padding-inline-start: 40px;
+			background-color: transparent;
+		}
+		input.search {
+			// padding-inline-end: 150px;
+		}
+		.prefix {
+			color: #595959;
+		}
+		input::placeholder {
+			color: #595959;
+			font-size: 14px;
+		}
+		.postfix {
+			display: flex;
+			color: #595959;
+			align-items: center;
+			grid-gap: 2px;
+
+			button {
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 0px;
+				background-color: transparent;
+			}
+			button[disabled] {
+				cursor: default;
+			}
+		}
+	}
+}
+.postfix ::ng-deep .mat-icon-button {
+	width: 30px;
+}

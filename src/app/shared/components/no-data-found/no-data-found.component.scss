@@ -1,0 +1,20 @@
+.massageShow{
+    padding: 20px 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #2d3944;
+    opacity: 0.5;
+    mat-icon{
+        width: 120px;
+        height: 100px;
+        padding-top: 20px;
+        border-radius: 100%;
+        font-size: 80px;
+        color: #2d3944;
+        background-color:#2d39443f;
+    }
+    .massageTitle{
+        padding: 20px;
+    }
+}

@@ -1,0 +1,15 @@
+<button mat-icon-button class="apps-btn" [matMenuTriggerFor]="menu">
+  <mat-icon>apps</mat-icon>
+</button>
+<mat-menu #menu="matMenu" class="menu-panel">
+  <div class="apps">
+    <a routerLink="/recordings" routerLinkActive="active" class="app">
+      <mat-icon class="icon" svgIcon="videocam_outline"></mat-icon>
+      <div>Calls</div>
+    </a>
+    <a routerLink="/admin" routerLinkActive="active" class="app gold">
+      <mat-icon class="icon" svgIcon="admin_panel_settings_outline"></mat-icon>
+      <div>Admin</div>
+    </a>
+  </div>
+</mat-menu>

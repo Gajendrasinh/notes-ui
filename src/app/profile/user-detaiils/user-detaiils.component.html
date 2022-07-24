@@ -1,0 +1,84 @@
+<mat-card *ngIf="'isProfileDetails' | featureAccess">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header>Account Details</mat-card-header>
+	<p class="sub-title">Details of the account</p>
+	<mat-card-content>
+		<form [formGroup]="userDetailsForm">
+			<div class="form-content">
+				<div class="form-control-two-grid">
+					<div class="form-group">
+						<do-input label="First Name">
+							<input
+								matInput
+								type="text"
+								formControlName="firstName"
+								placeholder="First Name"
+							/>
+							<mat-error>
+								<ng-container
+									*ngIf="userDetailsForm.get('firstName')?.hasError('required')"
+								>
+									First name missing.
+								</ng-container>
+							</mat-error>
+						</do-input>
+					</div>
+
+					<div class="form-group">
+						<do-input label="Last Name">
+							<input
+								matInput
+								type="text"
+								formControlName="lastName"
+								placeholder="Last Name"
+							/>
+							<mat-error>
+								<ng-container
+									*ngIf="userDetailsForm.get('lastName')?.hasError('required')"
+								>
+									Last name missing.
+								</ng-container>
+							</mat-error>
+						</do-input>
+					</div>
+				</div>
+
+				<!-- [TODO] : below code will uncomment when required -->
+				<div class="form-control-two-grid">
+					<div class="form-group">
+						<do-input label="Email">
+							<input
+								matInput
+								type="text"
+								formControlName="email"
+								placeholder="Email"
+							/>
+							<mat-error>
+								<ng-container
+									*ngIf="userDetailsForm.get('email')?.hasError('required')"
+								>
+									E-mail Missing
+								</ng-container>
+							</mat-error>
+						</do-input>
+					</div>
+					<div class="form-group">
+						<!-- <do-input label="Reporting To">
+                  <input matInput type="text" formControlName="reportingTo" placeholder="Reporting To">
+                  <mat-error>
+                      <ng-container *ngIf="userDetailsForm.get('reportingTo')?.hasError('required')"> Reporting to Missing </ng-container>                   
+                  </mat-error>
+                </do-input> -->
+					</div>
+				</div>
+
+				<!-- <div class="form-btn">
+              <button class="delete-account-btn" mat-raised-button [disabled]="!userDetailsForm.valid">
+                DELETE ACCOUNT </button>
+        
+              <button class="edit-changePassword-btn" mat-flat-button> Edit details </button>
+            </div> -->
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>

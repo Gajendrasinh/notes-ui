@@ -1,0 +1,26 @@
+<div class="do-card bg-neutral-1">
+	<div class="header" #Header>
+		<div class="left"></div>
+		<div class="middle">
+			<div class="transcript-analytic-button">
+				<a
+					[routerLink]="['/recordings', recordingId]"
+					href="javascript:void(0)"
+					class=""
+				>
+					<mat-icon class="">insert_drive_file</mat-icon> Transcript
+				</a>
+			</div>
+			<div class="transcript-analytic-button">
+				<a
+					[routerLink]="['/analytics', recordingId]"
+					href="javascript:void(0)"
+					class="text-info active"
+				>
+					<mat-icon class="">bar_chart</mat-icon> Analytics</a
+				>
+			</div>
+		</div>
+		<div class="right"></div>
+	</div>
+</div>

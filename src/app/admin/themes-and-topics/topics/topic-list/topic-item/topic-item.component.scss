@@ -1,0 +1,80 @@
+mat-card {
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    width : 100%;
+
+    mat-card-header {
+        font-size  : 16px;
+        font-weight: 600;
+        color      : #231f20;
+        padding-bottom: 0px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .topic-name{
+            text-align: left;
+            width: 50%;
+        }
+        .theme-name{
+            text-align: right;
+            width: 50%;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 2;
+            color: #595959;
+        }
+    }
+
+    mat-card-content {
+        display        : flex;
+        justify-content: space-between;
+        width          : 100%;
+        .container {
+            width                : 100%;
+            display              : grid;
+            grid-template-columns: 95% 5%;
+
+            .topic-content {
+                width    : 100%;
+                overflow : visible;
+                word-wrap: break-word;
+            }
+        }
+
+        mat-chip {
+            background-color: #ffffff !important;
+            border-radius   : 19px;
+            border          : solid 1px #bbbbbc !important;
+            cursor          : pointer;
+            font-weight     : 500;
+            letter-spacing  : -0.15px;
+            color           : #565656 !important;
+            font-size       : 12px;
+            font-stretch    : normal;
+            font-style      : normal;
+            line-height     : normal;
+        }
+    }
+
+    .more-menu {
+        visibility: hidden;
+        cursor    : pointer;
+        color     : #424242;
+    }
+}
+
+mat-card:hover {
+    box-shadow: 0 4px 18px 3px rgba(0, 0, 0, 0.04), 0 10px 14px 1px rgba(0, 0, 0, 0.06), 0 6px 6px -3px rgba(0, 0, 0, 0.12) !important;
+
+    mat-card-content {
+        .more-menu {
+            visibility: visible;
+        }
+    }
+}
+
+:host ::ng-deep .mat-card.mat-card .mat-card-header {
+    border: none;
+}

@@ -1,0 +1,38 @@
+
+.notification {
+  display: flex;
+}
+
+.message {
+  padding: 12px 0 10px 0;
+}
+
+.notification mat-icon {
+  font-size: 27px;
+  padding-top: 8px;
+  height: 21px;
+  width: 21px;
+  margin-left: 4px;
+}
+
+.icons {
+  margin-right: 15px;
+}
+
+.notification .info {
+  color: blue;
+}
+
+.notification .success {
+  color: green;
+}
+
+.notification .warning {
+  color: orange;
+}
+
+.notification .error {
+  color: red;
+}
+
+

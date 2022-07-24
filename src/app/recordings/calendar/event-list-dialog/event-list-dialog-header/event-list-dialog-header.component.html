@@ -1,0 +1,43 @@
+<div class="header">
+  <div class="filter">
+    <button mat-icon-button color="default" (click)="previousDate()">
+      <mat-icon inline="true" class="arrow-icon">arrow_left</mat-icon>
+    </button>
+    <input
+      class="date"
+      mat-dialog-title
+      matInput
+      [matDatepicker]="picker"
+      [disabled]="true"
+      [formControl]="date"
+    />
+    <button mat-icon-button color="default" (click)="nextDate()">
+      <mat-icon inline="true" class="arrow-icon">arrow_right</mat-icon>
+    </button>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+    <button mat-icon-button color="default" (click)="picker.open()">
+      <mat-icon>event_available</mat-icon>
+    </button>
+
+    <div class="flex-item-spacer"></div>
+    <button
+      class="sort-button"
+      mat-stroked-button
+      [matMenuTriggerFor]="sortButton"
+    >
+      All Calendars <mat-icon mat-list-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #sortButton="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <span>suhas@dataorb.ai</span>
+      </button>
+      <button mat-menu-item>
+        <span>bhargav@dataorb.ai</span>
+      </button>
+    </mat-menu>
+  </div>
+  <span class="flex-item-spacer"></span>
+  <button mat-icon-button [matDialogClose] class="close-btn" color="default">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>

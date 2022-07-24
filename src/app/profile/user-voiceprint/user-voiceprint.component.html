@@ -1,0 +1,26 @@
+<mat-card *ngIf="'isProfileVoiceprint' | featureAccess">
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header>Voiceprint</mat-card-header>
+	<p class="sub-title">Your voice print is used to identify you in meetings</p>
+	<mat-card-content>
+		<div class="wrapper" *ngIf="recordingPath">
+			<do-audio-player
+				[src]="recordingPath"
+				[customOptions]="audioPlayerCustomOptions"
+				(playAudio)="onPlay()"
+				(initialized)="handlePlayerInitialized()"
+				(playerHandlers)="registerPlayerHandlers($event)"
+			>
+			</do-audio-player>
+		</div>
+
+		<div class="recorderName">
+			Voiceprint for {{ currentUserInfo?.given_name }}
+			{{ currentUserInfo?.family_name }}
+		</div>
+
+		<!-- <footer>
+            <button  mat-flat-button  color="primary" class="change-voice-btn"  (click)="onChangeVoicePrint()"> Change Voiceprint </button>           
+        </footer> -->
+	</mat-card-content>
+</mat-card>

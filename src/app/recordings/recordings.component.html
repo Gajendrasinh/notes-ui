@@ -1,0 +1,12 @@
+<div class="container">
+	<recordings-header
+		class="header"
+		[hideSearchInput]="!onboardingCompleted"
+		[hideUpload]="!onboardingCompleted"
+	></recordings-header>
+	<div class="main" *ngIf="onboardingCompleted">
+		<div class="recordings-container">
+			<recording-list class="recordings-list"></recording-list>
+		</div>
+	</div>
+</div>

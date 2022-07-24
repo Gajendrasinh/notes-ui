@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="logo-container">
+    <img height="32" [src]="getAssetsPath('/assets/icons/logo_1.svg')" alt="DO" />
+    <span class="label">Calls</span>
+  </div>
+  <div class="flex-item-spacer"></div>
+  <div class="search" *ngIf="!hideSearchInput">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input
+      type="text"
+      name="recordings-search"
+      placeholder="Search meeting titles"
+      [formControl]="searchControl"
+    />
+  </div>
+  <div class="flex-item-spacer"></div>
+  <apps-menu class="apps-menu"></apps-menu>
+  <shared-user-menu></shared-user-menu>
+</div>

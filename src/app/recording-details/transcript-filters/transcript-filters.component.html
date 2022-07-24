@@ -1,0 +1,37 @@
+<mat-card
+	class="do-card"
+	*ngIf="activeFilter$ | async as activeFilter"
+	[style.height.px]="headerHeight"
+>
+	<ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+	<mat-card-header class="body font-weight-500" #Header>
+		<div class="header">
+			<div class="filters">
+				<span
+					*ngFor="let filter of filters"
+					(click)="updateTranscriptFilter(filter.key)"
+					[ngClass]="{
+						'text-info font-weight-600': filter.key === activeFilter
+					}"
+				>
+					{{ filter.title }}</span
+				>
+			</div>
+			<a
+				mat-button
+				[disabled]="!enableClearFilter"
+				class="text-info clear-filter font-weight-500"
+				(click)="clearFilters()"
+			>
+				Clear Filter(s)
+			</a>
+		</div>
+	</mat-card-header>
+
+	<mat-card-content>
+		<div [ngSwitch]="activeFilter">
+			<app-topics *ngSwitchCase="'topics'"></app-topics>
+			<ng-container *ngSwitchCase="'questions'"></ng-container>
+		</div>
+	</mat-card-content>
+</mat-card>

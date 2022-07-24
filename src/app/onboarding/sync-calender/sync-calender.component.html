@@ -1,0 +1,97 @@
+<div class="wrapper">
+	<ng-container
+		*ngIf="isSecondStep; then secondStep; else firstStep"
+	></ng-container>
+
+	<!-- firstStep template -->
+	<ng-template #firstStep>
+		<p class="title">Calendar sync</p>
+		<p class="message text-neutral-5">
+			Sync your calendar & drive with DataOrb
+		</p>
+
+		<app-calendar-integration-card
+			class="calendar-integration-card"
+			(accountChange)="handleAccountChange($event)"
+			(connected)="connected = $event"
+			[allowSyncCall]="false"
+		></app-calendar-integration-card>
+		<div class="desc-text" *ngIf="!connected">
+			<p>
+				Connecting your calendar & drive securely to DataOrb is highly
+				recommended as this ensures we do not miss any of your meetings.
+			</p>
+			<p>
+				Alternatively, you can also
+				<a href="javascript:void(0)" (click)="handleSkip()">skip</a> this step
+				for now and choose to connect calender and drive anytime to record your
+				meetings.
+			</p>
+		</div>
+		<footer *ngIf="connected">
+			<button
+				mat-flat-button
+				color="primary"
+				(click)="handleNext()"
+				*ngIf="!isInvitedUser"
+			>
+				NEXT
+			</button>
+			<button
+				mat-flat-button
+				color="primary"
+				(click)="handleDone()"
+				[disabled]="isDisableDone"
+				*ngIf="isInvitedUser"
+			>
+				DONE
+			</button>
+		</footer>
+	</ng-template>
+	<!-- secondStep template -->
+	<ng-template #secondStep>
+		<form>
+			<mat-card>
+				<p class="title">Recording Settings</p>
+				<p class="message text-neutral-5 recording-desc">
+					Configure when DataOrb can join and record meetings from your
+					calendar. Only meetings where the user is organizer will be recorded.
+				</p>
+
+				<mat-radio-group
+					name="rulesList"
+					class="rules"
+					color="primary"
+					[(ngModel)]="selectedRule"
+				>
+					<mat-radio-button
+						[name]="rules.type"
+						*ngFor="let rules of rulesList; index as i"
+						[value]="rules.type"
+					>
+						{{ rules.name }}
+					</mat-radio-button>
+				</mat-radio-group>
+			</mat-card>
+			<footer>
+				<button
+					class="cancel-btn"
+					mat-stroked-button
+					color="primary"
+					[disabled]="isDisableSave"
+					(click)="handleBack()"
+				>
+					BACK
+				</button>
+				<button
+					mat-flat-button
+					color="primary"
+					[disabled]="isDisableSave"
+					(click)="handleSave()"
+				>
+					SAVE
+				</button>
+			</footer>
+		</form>
+	</ng-template>
+</div>

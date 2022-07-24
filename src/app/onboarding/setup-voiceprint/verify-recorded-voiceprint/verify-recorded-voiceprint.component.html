@@ -1,0 +1,25 @@
+<div>
+	<div class="wrapper">
+		<do-audio-player [src]="src" [duration]="duration"></do-audio-player>
+	</div>
+
+	<div class="recorderName">
+		Voiceprint for {{ currentUserInfo.given_name }}
+		{{ currentUserInfo.family_name }}
+	</div>
+
+	<footer>
+		<button
+			mat-stroked-button
+			color="primary"
+			class="cancel-btn"
+			[disabled]="isDisableSave"
+			(click)="onDiscard()"
+		>
+			DISCARD
+		</button>
+		<button mat-flat-button color="primary" (click)="onSave()">
+			<mat-spinner diameter="22" *ngIf="isDisableSave"></mat-spinner> SAVE
+		</button>
+	</footer>
+</div>

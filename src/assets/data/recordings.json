@@ -1,0 +1,76 @@
+{
+    "status": {
+        "statusCode": 200,
+        "description": ""
+    },
+    "data": {
+        "eventCount": 10,
+        "lastFetchedTime": 123434,
+        "events": [
+            {
+                "eventId": "1",
+                "name": "Sprint Planning Meeting",
+                "meetingTime": 1625022289599,
+                "organization": {
+                    "id": 1,
+                    "name": "org"
+                },
+                "inviter": {
+                    "name": "test one",
+                    "email": "test@dataorb.ai"
+                },
+                "totalParticipant": 10,
+                "trackerCount": 1,
+                "duration": 110
+            },
+            {
+                "eventId": "2",
+                "name": "Sptring Grooming Meeting",
+                "meetingTime": 162502020110,
+                "organization": {
+                    "id": 1,
+                    "name": "org"
+                },
+                "inviter": {
+                    "name": "test two",
+                    "email": "testttwo@dataorb.ai"
+                },
+                "totalParticipant": 10,
+                "trackerCount": 2,
+                "duration": 110
+            },
+            {
+                "eventId": "3",
+                "name": "Edit Transcript API Discussion 3",
+                "meetingTime": 1624919400000,
+                "organization": {
+                    "id": 1,
+                    "name": "org"
+                },
+                "inviter": {
+                    "name": "test two",
+                    "email": "testttwo@dataorb.ai"
+                },
+                "totalParticipant": 3,
+                "trackerCount": 4,
+                "duration": 110
+            },
+            {
+                "eventId": "4",
+                "name": "Recording List API Discussion",
+                "meetingTime": 1624923000000,
+                "organization": {
+                    "id": 1,
+                    "name": "org"
+                },
+                "inviter": {
+                    "name": "test two",
+                    "email": "testttwo@dataorb.ai"
+                },
+                "totalParticipant": 2,
+                "trackerCount": 0,
+                "duration": 300
+            }
+        ]
+    }
+}

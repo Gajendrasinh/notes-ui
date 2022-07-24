@@ -1,0 +1,24 @@
+<div class="container">
+  <form>
+    <mat-card>
+      <ngx-ui-loader [loaderId]="loaderId"></ngx-ui-loader>
+      <p class="title">
+        Recording Settings
+      </p>
+      <p class="message text-neutral-5">
+        Configure when DataOrb can join and record meetings from your calendar. Only meetings where the user is organizer will be recorded.
+      </p>
+      <mat-radio-group name="rulesList" class="rules" color="primary" [(ngModel)]="selectedRule">
+        <mat-radio-button [name]="rules.type" *ngFor="let rules of rulesList; index as i" [value]="rules.type">
+          {{rules.name}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <footer>
+        <button mat-flat-button color="primary" (click)="handleSave()"
+        [matTooltip]="(ruleUpdateInProgressMsg$ | async) || ''" [matTooltipHideDelay]="400" [matTooltipDisabled]="(isRuleUpdateInProgress$ | async) === false" matTooltipPosition="right">
+          <mat-spinner diameter="22" *ngIf="isRuleUpdateInProgress$ | async" ></mat-spinner> Save</button>
+          <div *ngIf="ruleUpdatedStatus$ | async as status" class="last-update"> Last rule update on: {{status.lastUpdatedDateTime | dateWithLocalTimezone:'MM/dd/YYYY, hh:mm aa'}} by {{status?.username}} </div>
+      </footer>
+    </mat-card>
+  </form>
+</div>

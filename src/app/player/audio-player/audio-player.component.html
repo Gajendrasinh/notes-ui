@@ -1,0 +1,99 @@
+<mat-card class="do-card">
+	<div class="player-container">
+		<div id="audio-player"></div>
+		<ng-content select="app-marker"></ng-content>
+	</div>
+	<mat-toolbar-row class="media-action-bar" *ngIf="!hideToolbar">
+		<div class="time">
+			<span>{{ state.currentTime | playbackTime }}</span>
+			<span *ngIf="state.duration || duration">
+				/{{ state.duration || duration | playbackTime }}
+			</span>
+		</div>
+		<div class="controls">
+			<mat-menu class="playback-menu" yPosition="above" #playbackMenu="matMenu">
+				<div
+					mat-menu-item
+					*ngFor="let rate of playbackRates"
+					(click)="changePlaybackRate(rate)"
+				>
+					{{ rate }}
+				</div>
+			</mat-menu>
+			<button
+				mat-mini-fab
+				[matMenuTriggerFor]="playbackMenu"
+				color="default"
+				[disabled]="state.error || !state.canplay"
+			>
+				{{ state.playbackRate }}
+			</button>
+			<button
+				mat-mini-fab
+				color="default"
+				(click)="skip(-10)"
+				[disabled]="state.error || !state.canplay"
+			>
+				<mat-icon mat-list-icon>replay_10</mat-icon>
+			</button>
+
+			<button
+				mat-mini-fab
+				color="default"
+				(click)="state.playing ? pause() : play()"
+				[disabled]="state.error || !state.canplay"
+			>
+				<mat-icon mat-list-icon class="icon">{{
+					state.playing ? "pause" : "play_circle_outline"
+				}}</mat-icon>
+			</button>
+
+			<button
+				mat-mini-fab
+				color="default"
+				(click)="skip(10)"
+				[disabled]="state.error || !state.canplay"
+			>
+				<mat-icon mat-list-icon>forward_10</mat-icon>
+			</button>
+			<button
+				mat-mini-fab
+				color="default"
+				[matMenuTriggerFor]="volumeMenu"
+				[disabled]="state.error || !state.canplay"
+			>
+				<mat-icon color="default" mat-list-icon>{{
+					state.volume < 0.5
+						? state.volume === 0
+							? "volume_off"
+							: "volume_down"
+						: "volume_up"
+				}}</mat-icon>
+			</button>
+			<mat-menu class="volume-menu" yPosition="above" #volumeMenu="matMenu">
+				<mat-slider
+					class="volume-control"
+					min="0"
+					max="1"
+					step="0.1"
+					[value]="state.volume"
+					vertical="true"
+					(change)="volumeChange($event)"
+				></mat-slider>
+			</mat-menu>
+		</div>
+		<div class="actions">
+			<a
+				*ngIf="showDownload"
+				[href]="state.url"
+				download
+				target="_blank"
+				mat-icon-button
+				color="default"
+				[disabled]="state.error || !state.canplay"
+			>
+				<mat-icon mat-list-icon svgIcon="download"></mat-icon>
+			</a>
+		</div>
+	</mat-toolbar-row>
+</mat-card>

@@ -1,0 +1,49 @@
+<ng-container [ngSwitch]="state">
+	<div
+		*ngSwitchCase="'inactive'"
+		class="voice-print-footer"
+		[ngClass]="{ denied: permission === 'denied' }"
+	>
+		<ng-container *ngIf="permission === 'denied'; else StartRecording">
+			<mat-icon>warning</mat-icon>
+			<span>Please allow access to microphone from browser settings</span>
+		</ng-container>
+		<ng-template #StartRecording>
+			<ng-container *ngTemplateOutlet="StartRecordingTemplate"></ng-container>
+			<div class="voice-record-btn-msg">
+				Click on the “record button” and read the above passage.
+			</div>
+		</ng-template>
+	</div>
+	<div *ngSwitchCase="'recording'">
+		<div class="voice-print-footer">
+			<button class="voice-record-btn" (click)="stopRecording()">
+				<mat-icon>stop</mat-icon>
+			</button>
+			<canvas #AudioVisualizer class="audio-visualizer"></canvas>
+		</div>
+		<div class="recordingTime" *ngIf="timer$ | async as timer">
+			{{ timer.time | playbackTime }}
+		</div>
+	</div>
+	<div *ngSwitchCase="'recorded'">
+		<div class="voice-print-footer">
+			<ng-container *ngTemplateOutlet="StartRecordingTemplate"></ng-container>
+			<do-audio-player
+				*ngIf="recordedAudio"
+				[src]="recordedAudio.audioUrl"
+				[hideToolbar]="true"
+				[customOptions]="audioPlayerCustomOptions"
+			></do-audio-player>
+		</div>
+		<div class="recordingTime" *ngIf="duration">
+			{{ duration | playbackTime }}
+		</div>
+	</div>
+</ng-container>
+
+<ng-template #StartRecordingTemplate>
+	<button class="voice-record-btn" (click)="startRecording()">
+		<mat-icon> circle </mat-icon>
+	</button>
+</ng-template>
